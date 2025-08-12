@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>MailTemplate Class</title><meta name="Title" content="MailTemplate" /><meta name="Help.Id" content="T:DotNetExtras.Mail.MailTemplate" /><meta name="Help.ContentType" content="Reference" /><meta name="container" content="DotNetExtras.Mail" /><meta name="guid" content="T_DotNetExtras_Mail_MailTemplate" /><meta name="Description" content="Generates an email message for the specific (or matching) language from a localized Razor template file and the provided data object." /><meta name="tocFile" content="../toc/IDAB.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div class="level-item"><img src="../icons/Help.png" /></div><div id="DocumentationTitle" class="level-item">DotNetExtras.Mail Library Documentation</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><div id="HeaderPrelimContainer" class="level my-1 px-2"><div id="PreliminaryContainer" class="level-left"><div class="level-item"><span class="tag is-warning is-medium">This is preliminary documentation and is subject to change.</span></div></div></div><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div id="ContentContainer" class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="Resizer" class="is-hidden"></div><div id="TopicContent" class="column content is-7"><h1>Mail<wbr />Template Class</h1><div class="summary">
+             Generates an email message for the specific (or matching) language from a localized 
+             <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor" target="_blank" rel="noopener noreferrer">Razor template</a>
+             file and the provided data object.
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_DotNetExtras_Mail.htm">DotNetExtras.Mail</a><br /><strong>Assembly:</strong> DotNetExtras.Mail (in DotNetExtras.Mail.dll) Version: 1.0.0<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">class</span> <span class="identifier">MailTemplate</span></code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">MailTemplate</span></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection"><p>
+             The merge process makes these assumptions and conforms to the following conventions:
+             <ul><li>Every email template is identified by a string ID, such as <span class="code">EmailVerification</span>, <span class="code">WelcomeMessage</span>, etc.</li><li>Localized template files are named as <span class="code">templateId_languageCode.extension</span>, such as <span class="code">Welcome_es-mx.html</span> (separator characters can be customized).</li><li>Localized template files are formatted as valid HTML documents.</li><li>The contents of the <span class="code">&lt;title&gt;</span> elements in the localized template files will be used as the email message subjects.</li><li>The contents of the <span class="code">&lt;body&gt;</span> elements in the localized template files will be used as the email message bodies.</li><li>Template files can contain Razor syntax for data binding.</li><li>The specified language code must match the language code suffix in the file name.</li><li>If no template file with the language code suffix matching the specified language code is found for a particular email template ID, then an alternative language code will be used.</li><li>If a more specific language code (e.g. <span class="code">es-mx</span>) is not implemented for the specified template, a template file with a more generic language code (e.g. <span class="code">es</span>) will be tried.</li><li>A language map can be defined for more precise language code mapping.</li></ul></p></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCCSection">
+             Zodiac_en-us.html file:
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">XML</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome @Raw(Model.Zodiac)!&lt;/title&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;Hello @Raw(Model.Name),&lt;/p&gt;
+&lt;p&gt;
+Your Zodiac sign is: @Raw(Model.Zodiac).
+&lt;/p&gt;
+&lt;p&gt;
+&amp;copy; @Model.Year | &lt;a href="#"&gt;Terms&lt;/a&gt; | &lt;a href="#"&gt;Privacy&lt;/a&gt; | &lt;a href="#"&gt;Unsubscribe&lt;/a&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div>
+             
+             C# code:
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">MailTemplate template = new();
+
+Data data = new()
+{
+    Zodiac = "Leo",
+    Name = "John",
+    Year = 2025
+};
+
+// Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
+template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+
+// Subject will hold the merged value of the title element.
+string subject = template.Subject;
+
+// Body will hold the merged value of the body element.
+string body = template.Body;
+
+// Language will hold the language code actually used by the template.
+string language = template.Language;</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAEASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_DotNetExtras_Mail_MailTemplate__ctor.htm">MailTemplate</a></td><td>
+            Initializes a new instance of the <span class="selflink">MailTemplate</span> class.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Properties</h2><div id="IDCEASection"><table id="PropertyList" class="table is-hoverable"><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Body.htm">Body</a></td><td>
+            Returns the text of the email HTML message body 
+            (after the data transformation performed by the <a href="M_DotNetExtras_Mail_MailTemplate_Load.htm">Load(String, String, String, String, Object)</a> call).
+            </td></tr><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Cached.htm">Cached</a></td><td>
+            Indicates whether the pre-compiled template was loaded from the Razor engine's memory cache
+            (after the data transformation performed by the <a href="M_DotNetExtras_Mail_MailTemplate_Load.htm">Load(String, String, String, String, Object)</a> call).
+            </td></tr><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Language.htm">Language</a></td><td>
+            Returns the real template language used for the specified 
+            template ID and language in a pretty format, such as <span class="code">xx-YY-ZZ</span>
+            (after the data transformation performed by the <a href="M_DotNetExtras_Mail_MailTemplate_Load.htm">Load(String, String, String, String, Object)</a> call).
+            </td></tr><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Subject.htm">Subject</a></td><td>
+            Returns the email HTML message subject from the title element 
+            (after the data transformation performed by the <a href="M_DotNetExtras_Mail_MailTemplate_Load.htm">Load(String, String, String, String, Object)</a> call).
+            </td></tr><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Template.htm">Template</a></td><td>
+            Returns the original text of the localized HTML email template.
+            </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Methods</h2><div id="IDBEASection"><table id="MethodList" class="table is-hoverable"><tr><td><a href="M_DotNetExtras_Mail_MailTemplate_Load.htm">Load</a></td><td>
+             Loads a localized email template file for the specified (or matching) language 
+             and merges the template text with the specified data (if the data object is specified).
+             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Reference</h4><div><a href="N_DotNetExtras_Mail.htm">DotNetExtras.Mail Namespace</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Definition</a></li><li><a class="quickLink">Remarks</a></li><li><a class="quickLink">Example</a></li><li><a class="quickLink">Constructors</a></li><li><a class="quickLink">Properties</a></li><li><a class="quickLink">Methods</a></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div id="FooterContent" class="column"><a href="https://github.com/alekdavis/dotnet-extras-mail" target="_blank">Project repository</a><p>Copyright © 2025 Alek Davis</p><div class="feedbackLink">Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:alek.davis%40gmail.com?Subject=DotNetExtras.Mail%20Library%20Documentation">Alek Davis</a></div>
+        <script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script> 
+				</div></div></footer></div><script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script></body></html>

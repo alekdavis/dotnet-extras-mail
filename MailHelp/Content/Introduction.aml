@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="95884982-ff04-4b6e-9214-7622491f4679" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>A brief overview of the DotNetExtras libraries.</para>
+    </summary>
+    -->
+    
+    <introduction>
+      <!-- <autoOutline /> -->
+      <para>
+        DotNetExtras.Configuration is a .NET Core library that isimplifies loading, reading, and transforming configuration settings in .NET applications. See the API documentation section for the description of the DotNetExtras.Configuration namespaces and classes.
+      </para>
+    </introduction>
+
+    <relatedTopics>
+      <externalLink>
+        <linkText>DotNetExtras.Configuration Nuget package</linkText>
+        <linkUri>https://www.nuget.org/packages/DotNetExtras.Configuration</linkUri>
+      </externalLink>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
