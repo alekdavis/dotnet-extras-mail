@@ -26,7 +26,7 @@ Zodiac/
   ...
 ```
 
-The templates use the Razor syntax and the `Model` placeholders, such as `@Model.Name` or `@Raw(Model.Name)` for text substitutions. The following code will try to load the `es-MX` version of the template and merge the specified template or the best alternative with the provided data:
+The templates use the [Razor syntax](https://www.codecademy.com/learn/asp-net-i/modules/asp-net-razor-syntax/cheatsheet) and the `Model` placeholders, such as `@Model.Name` or `@Raw(Model.Name)` for text substitutions. The following code will try to load the `es-MX` version of the template and merge the specified template or the best alternative with the provided data:
 
 ```cs
 // Data object to be merged with the template.
