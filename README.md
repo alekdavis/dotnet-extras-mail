@@ -11,12 +11,20 @@ Use the `DotNetExtras.Mail` library to:
 - Retrieve email subject from the merged template.
 
 ## Documentation
+
 For complete documentation, usage details, and code samples, see:
 
 - [Documentation](https://alekdavis.github.io/dotnet-extras-mail)
 - [Unit tests](https://github.com/alekdavis/dotnet-extras-mail/tree/main/MailTests)
 
 ## Package
+
 Install the latest version of the `DotNetExtras.Mail` Nuget package from:
 
 - [https://www.nuget.org/packages/DotNetExtras.Mail](https://www.nuget.org/packages/DotNetExtras.Mail)
+
+## See also
+
+Check out other `DotNetExtras` libraries at:
+
+- [https://github.com/alekdavis/dotnet-extras](https://github.com/alekdavis/dotnet-extras)

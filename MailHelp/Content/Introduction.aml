@@ -7,7 +7,7 @@
     <introduction>
       <!-- <autoOutline /> -->
       <para>
-        The DotNetExtras.Mail library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the <legacyItalic>API documentation</legacyItalic> section.
+        The <legacyItalic>DotNetExtras.Mail</legacyItalic> library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the <legacyItalic>API documentation</legacyItalic> section.
       </para>
     </introduction>
 
