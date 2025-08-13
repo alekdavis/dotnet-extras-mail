@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="95884982-ff04-4b6e-9214-7622491f4679" visible="True" isSelected="true" apiParentMode="InsertAfter" title="Introduction">
+  <Topic id="DotNetExtras.Mail.Introduction" visible="True" isSelected="true" apiParentMode="InsertAfter" title="Introduction">
     <HelpKeywords>
       <HelpKeyword index="K" term="introduction" />
       <HelpKeyword index="K" term="overview" />
