@@ -12,9 +12,23 @@ Use the `DotNetExtras.Mail` library to:
 
 Notice that this library does not send emails. It only provides functionality to prepare email templates for sending.
 
-## Sample usage
+## Usage
 
-```csharp
+Let's assume that there are localized email templates for a notification identified by the template ID (`Zodiac`) and language extensions:
+
+```
+Zodiac/
+  Zodiac_en-US.html
+  Zodiac_en-GB.html
+  Zodiac_es.html
+  Zodiac_fr.html
+  Zodiac_pt.html
+  ...
+```
+
+The templates use the Razor syntax and the `Model` placeholders, such as `@Model.Name` or `@Raw(Model.Name)` for text substitutions. The following code will try to load the `es-MX` version of the template and merge the specified template or the best alternative with the provided data:
+
+```cs
 // Data object to be merged with the template.
 Data data = new()
 {
@@ -23,6 +37,7 @@ Data data = new()
     Year = 2025
 };
 
+// Use the defaults in the constructor.
 MailTemplate template = new();
 
 // Load the 'es-MX' version of the 'Zodiac' email notification template 
@@ -31,13 +46,17 @@ MailTemplate template = new();
 // If the 'es' translation is also not available, it will fall back to the default template
 // based on whatever default language suffix was defined previously.
 template.Load("Samples/Zodiac", "Zodiac", "es-MX", ".html", data);
+```
 
+If the template was loaded successfully, the `template` object will contain the merged data. You can access the merged subject and body text as follows:
+
+```cs
 // The template object's 'Subject' property will hold the merged value 
 // of the file template 'title' element.
 string subject = template.Subject;
 
 // The template object's 'Body' property will hold the merged value 
-// of thefile template's 'body' element.
+// of the file template's 'body' element.
 string body = template.Body;
 
 // The template object's 'Language' propoerty will hold the language code 
@@ -58,6 +77,12 @@ For complete documentation, usage details, and code samples, see:
 Install the latest version of the `DotNetExtras.Mail` Nuget package from:
 
 - [https://www.nuget.org/packages/DotNetExtras.Mail](https://www.nuget.org/packages/DotNetExtras.Mail)
+
+## Resources
+
+To simplify the process of building localized email templates, see:
+
+- [XslMail](https://github.com/alekdavis/xslmail)
 
 ## See also
 

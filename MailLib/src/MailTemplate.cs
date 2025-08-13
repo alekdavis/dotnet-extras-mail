@@ -246,7 +246,10 @@ public partial class MailTemplate
     /// </param>
     /// <param name="extension">
     /// Extension of the template file. 
-    /// If not specified, the default value set by the <see cref="MailTemplate(string?, string?, string?, string?, Dictionary{string, string}?)">constructor</see> will be used. 
+    /// If not specified or set to <c>null</c>, 
+    /// the default value set by the 
+    /// <see cref="MailTemplate(string?, string?, string?, string?, Dictionary{string, string}?)">constructor</see> 
+    /// will be used. 
     /// </param>
     /// <param name="data">
     /// Notification data that will be merged with the template file text to generate the message.
