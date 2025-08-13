@@ -30,7 +30,7 @@ MailTemplate template = new();
 // If the 'es-MX' version is not available, it will fall back to the 'es' translation.
 // If the 'es' translation is also not available, it will fall back to the default template
 // based on whatever default language suffix was defined previously.
-template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+template.Load("Samples/Zodiac", "Zodiac", "es-MX", ".html", data);
 
 // The template object's 'Subject' property will hold the merged value 
 // of the file template 'title' element.
