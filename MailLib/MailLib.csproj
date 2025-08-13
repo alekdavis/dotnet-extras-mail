@@ -16,7 +16,7 @@
     <PackageProjectUrl>https://alekdavis.github.io/dotnet-extras-mail</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/alekdavis/dotnet-extras-mail</RepositoryUrl>
-    <PackageTags>.net;utilities;helpers;library;classes;tools;toolbox;mail;appsettings</PackageTags>
+    <PackageTags>.net;utilities;helpers;library;classes;tools;toolbox;mail;</PackageTags>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSourceRevisionInInformationalVersion>False</IncludeSourceRevisionInInformationalVersion>
     <IncludeSymbols>True</IncludeSymbols>
