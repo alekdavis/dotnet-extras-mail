@@ -64,6 +64,7 @@ string body = template.Body;
 string language = template.Language;
 
 ```
+For the complete examples including the email templates, see the [unit tests project](https://github.com/alekdavis/dotnet-extras-mail/tree/main/MailTests).
 
 ## Documentation
 
