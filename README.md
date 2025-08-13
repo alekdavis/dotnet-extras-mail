@@ -4,10 +4,11 @@
 
 Use the `DotNetExtras.Mail` library to:
 
-- Pick the localized template of an email template for the specified language and culture.
+- Pick the localized version of an email template for the specified language and culture.
 - Find an alternative template if the specified language is not available.
 - Merge localized templates with message-specific data.
 - Allow localization of the email subjects along with the body text.
+- Retrieve email subject from the merged template.
 
 ## Documentation
 For complete documentation, usage details, and code samples, see:
