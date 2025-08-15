@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>DotNetExtras.Mail</name>
+  </assembly>
+  <members>
+    <member name="T:DotNetExtras.Mail.MailTemplate">
+      <summary>
+             Generates an email message for the specific (or matching) language from a localized 
+             <see href="https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor">Razor template</see>
+             file and the provided data object.
+             </summary>
+      <remarks>
+        <para>
+             The merge process makes these assumptions and conforms to the following conventions:
+             <list type="bullet"><item>Every email template is identified by a string ID, such as <c>EmailVerification</c>, <c>WelcomeMessage</c>, etc.</item><item>Localized template files are named as <c>templateId_languageCode.extension</c>, such as <c>Welcome_es-mx.html</c> (separator characters can be customized).</item><item>Localized template files are formatted as valid HTML documents.</item><item>The contents of the <c>&lt;title&gt;</c> elements in the localized template files will be used as the email message subjects.</item><item>The contents of the <c>&lt;body&gt;</c> elements in the localized template files will be used as the email message bodies.</item><item>Template files can contain Razor syntax for data binding.</item><item>The specified language code must match the language code suffix in the file name.</item><item>If no template file with the language code suffix matching the specified language code is found for a particular email template ID, then an alternative language code will be used.</item><item>If a more specific language code (e.g. <c>es-mx</c>) is not implemented for the specified template, a template file with a more generic language code (e.g. <c>es</c>) will be tried.</item><item>A language map can be defined for more precise language code mapping.</item></list></para>
+      </remarks>
+      <example>
+             Zodiac_en-us.html file:
+             <code language="html">
+             &lt;!DOCTYPE html&gt;
+             &lt;html lang="en"&gt;
+             &lt;head&gt;
+             &lt;title&gt;Welcome @Raw(Model.Zodiac)!&lt;/title&gt;
+             &lt;meta charset="utf-8"&gt;
+             &lt;/head&gt;
+             &lt;body&gt;
+             &lt;p&gt;Hello @Raw(Model.Name),&lt;/p&gt;
+             &lt;p&gt;
+             Your Zodiac sign is: @Raw(Model.Zodiac).
+             &lt;/p&gt;
+             &lt;p&gt;
+             &amp;copy; @Model.Year | &lt;a href="#"&gt;Terms&lt;/a&gt; | &lt;a href="#"&gt;Privacy&lt;/a&gt; | &lt;a href="#"&gt;Unsubscribe&lt;/a&gt;
+             &lt;/p&gt;
+             &lt;/body&gt;
+             &lt;/html&gt;
+             </code>
+             
+             C# code:
+             <code>
+             MailTemplate template = new();
+            
+             Data data = new()
+             {
+                 Zodiac = "Leo",
+                 Name = "John",
+                 Year = 2025
+             };
+             
+             // Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
+             template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+             
+             // Subject will hold the merged value of the title element.
+             string subject = template.Subject;
+             
+             // Body will hold the merged value of the body element.
+             string body = template.Body;
+             
+             // Language will hold the language code actually used by the template.
+             string language = template.Language;
+             </code></example>
+    </member>
+    <member name="P:DotNetExtras.Mail.MailTemplate.Template">
+      <summary>
+            Returns the original text of the localized HTML email template.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.MailTemplate.Body">
+      <summary>
+            Returns the text of the email HTML message body 
+            (after the data transformation performed by the <see cref="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" /> call).
+            </summary>
+      <remarks>
+            This will be the message body sent to the email recipient.
+            </remarks>
+    </member>
+    <member name="P:DotNetExtras.Mail.MailTemplate.Subject">
+      <summary>
+            Returns the email HTML message subject from the title element 
+            (after the data transformation performed by the <see cref="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" /> call).
+            </summary>
+      <remarks>
+            This will be the message subject sent to the email recipient.
+            </remarks>
+    </member>
+    <member name="P:DotNetExtras.Mail.MailTemplate.Language">
+      <summary>
+            Returns the real template language used for the specified 
+            template ID and language in a pretty format, such as <c>xx-YY-ZZ</c>
+            (after the data transformation performed by the <see cref="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" /> call).
+            </summary>
+      <remarks>
+            This property can be used to determine which language was actually used.
+            </remarks>
+    </member>
+    <member name="P:DotNetExtras.Mail.MailTemplate.Cached">
+      <summary>
+            Indicates whether the pre-compiled template was loaded from the Razor engine's memory cache
+            (after the data transformation performed by the <see cref="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" /> call).
+            </summary>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+      <summary>
+            Initializes a new instance of the <see cref="T:DotNetExtras.Mail.MailTemplate" /> class.
+            </summary>
+      <param name="defaultLanguage">
+            Default language code.
+            </param>
+      <param name="defaultTemplateFileExtension">
+            Default template file extension.
+            </param>
+      <param name="languageMap">
+            Non-standard mapping of language code fallbacks.
+            </param>
+      <param name="languageSeparator">
+            Separates template ID from language code in template file name, such as <c>NewAccountActivation-en</c>.
+            </param>
+      <param name="subLanguageSeparator">
+            Separates language code parts, such as in <c>en_US</c>.
+            </param>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)">
+      <summary>
+             Loads a localized email template file for the specified (or matching) language 
+             and merges the template text with the specified data (if the data object is specified).
+             </summary>
+      <param name="folder">
+             Path to the folder holding the template files (can be relative or absolute).
+             </param>
+      <param name="template">
+             Template identifier that will be used as the beginning of the localized template file name.
+             </param>
+      <param name="language">
+             Preferred template file language code.
+             </param>
+      <param name="extension">
+             Extension of the template file. 
+             If not specified or set to <c>null</c>, 
+             the default value set by the 
+             <see cref="M:DotNetExtras.Mail.MailTemplate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">constructor</see> 
+             will be used. 
+             </param>
+      <param name="data">
+             Notification data that will be merged with the template file text to generate the message.
+             </param>
+      <returns>
+             A localized mail message template merged with the data in the specified or a fallback language.
+             </returns>
+      <remarks>
+             After calling this method, use the 
+             <see cref="P:DotNetExtras.Mail.MailTemplate.Subject" /> and <see cref="P:DotNetExtras.Mail.MailTemplate.Body" />
+             properties to get the email message subject and body.
+             The <see cref="P:DotNetExtras.Mail.MailTemplate.Language" /> property will hold the language code of the loaded template
+             (which may be different from the requested language if the template in the requested language is not available).
+             </remarks>
+      <example>
+             Zodiac_en-us.html file:
+             <code language="html">
+             &lt;!DOCTYPE html&gt;
+             &lt;html lang="en"&gt;
+             &lt;head&gt;
+             &lt;title&gt;Welcome @Raw(Model.Zodiac)!&lt;/title&gt;
+             &lt;meta charset="utf-8"&gt;
+             &lt;/head&gt;
+             &lt;body&gt;
+             &lt;p&gt;Hello @Raw(Model.Name),&lt;/p&gt;
+             &lt;p&gt;
+             Your Zodiac sign is: @Raw(Model.Zodiac).
+             &lt;/p&gt;
+             &lt;p&gt;
+             &amp;copy; @Model.Year | &lt;a href="#"&gt;Terms&lt;/a&gt; | &lt;a href="#"&gt;Privacy&lt;/a&gt; | &lt;a href="#"&gt;Unsubscribe&lt;/a&gt;
+             &lt;/p&gt;
+             &lt;/body&gt;
+             &lt;/html&gt;
+             </code>
+             
+             C# code:
+             <code>
+             MailTemplate template = new();
+            
+             Data data = new()
+             {
+                 Zodiac = "Leo",
+                 Name = "John",
+                 Year = 2025
+             };
+             
+             // Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
+             template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+             
+             // Subject will hold the merged value of the title element.
+             string subject = template.Subject;
+             
+             // Body will hold the merged value of the body element.
+             string body = template.Body;
+             
+             // Language will hold the language code actually used by the template.
+             string language = template.Language;
+             </code></example>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.Merge(System.String,System.String,System.Object)">
+      <summary>
+            Merges the template with data.
+            </summary>
+      <param name="key">
+            Key identifying localized template.
+            </param>
+      <param name="template">
+            Template text.
+            </param>
+      <param name="data">
+            Notification data.
+            </param>
+      <returns>
+            Notification message body.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.MergeAsync(System.String,System.String,System.Object)">
+      <inheritdoc cref="M:DotNetExtras.Mail.MailTemplate.MergeAsync(System.String,System.String,System.Object)" path="param|returns" />
+      <summary>
+            Asynchronous method merging template with data.
+            </summary>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.NormalizeTemplate(System.String)">
+      <summary>
+            Implements special handling of certain template elements.
+            </summary>
+      <param name="template">
+            Template text.
+            </param>
+      <returns>
+            Normalized template.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.GetCompatibleLanguages(System.String)">
+      <summary>
+            Takes a language code and returns a list of all relevant languages 
+            including the original, the fallbacks (if any) and the default.
+            </summary>
+      <param name="language">
+            The preferred language code.
+            </param>
+      <returns>
+            List of possible alternatives.
+            </returns>
+      <example>
+        <c>en-AU</c>: <c>en-AU</c>, <c>en</c>, <c>en-US</c>.
+            <c>en-EN</c>: <c>en-EN</c>, <c>en</c>, <c>en-US</c>.
+            <c>es-MX</c>: <c>ex-MX</c>, <c>es</c>, <c>en-US</c>.
+            </example>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.Compact(System.String)">
+      <summary>
+            Removes dashes and underscores from the language code.
+            </summary>
+      <param name="value">
+            The original language code.
+            </param>
+      <returns>
+            The compacted language code value.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.FormatKey(System.String,System.String)">
+      <summary>
+            Generates the cache key for the specified language code and email template..
+            </summary>
+      <param name="templateId">
+            The template identifier.
+            </param>
+      <param name="language">
+            The language code.
+            </param>
+      <returns>
+            The cache key.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.FormatPath(System.String,System.String,System.String,System.String)">
+      <summary>
+            Generates the path to the email template file.
+            </summary>
+      <param name="templateFolderPath">
+            The template folder path.
+            </param>
+      <param name="templateId">
+            The template identifier.
+            </param>
+      <param name="language">
+            The language code.
+            </param>
+      <param name="extension">
+            The file extension.
+            </param>
+      <returns>
+            The file path.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.FormatFileName(System.String,System.String)">
+      <summary>
+            Formats the name of the template file without the extension.
+            </summary>
+      <param name="templateId">
+            The template identifier.
+            </param>
+      <param name="language">
+            The language code.
+            </param>
+      <returns>
+            The file name in the format <c>templateId_languageCode</c>,
+            such as <c>EmailVerification_en-us</c>.
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.FormatFileNameWithExtension(System.String,System.String,System.String)">
+      <summary>
+            Formats the name of the template file.
+            </summary>
+      <param name="templateId">
+            The template identifier.
+            </param>
+      <param name="language">
+            The language code.
+            </param>
+      <param name="extension">
+            The file extension.
+            </param>
+      <returns>
+            The file name in the format: TEMPLATEID-LANGUAGE_CODE.EXTENSION
+            </returns>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.NormalizeLanguage(System.String)">
+      <summary>
+            Converts the language code with dashes to the language file name suffix 
+            with underscores and in lower case.
+            </summary>
+      <param name="language">
+            The language code, such as 'es-MX'.
+            </param>
+      <returns>
+            The modified language code, such as 'es_mx'.
+            </returns>
+      <remarks>
+            Converting the language code to lower case is important
+            for case sensitive file systems, such as in Linux.
+            </remarks>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.InitializeRazor">
+      <summary>
+            Initializes the Razor engine.
+            </summary>
+    </member>
+    <member name="M:DotNetExtras.Mail.MailTemplate.RegexRepeatedSpaceChars">
+      <remarks>
+            Pattern:<br /><code>\\s+</code><br />
+            Explanation:<br /><code>
+            ○ Match a whitespace character atomically at least once.<br /></code></remarks>
+    </member>
+    <member name="T:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0">
+      <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex" />-derived type for the RegexRepeatedSpaceChars method.</summary>
+    </member>
+    <member name="F:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.Instance">
+      <summary>Cached, thread-safe singleton instance.</summary>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.#ctor">
+      <summary>Initializes the instance.</summary>
+    </member>
+    <member name="T:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory">
+      <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner" /> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex" />.</summary>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory.CreateInstance">
+      <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner" /> used by methods on <see cref="T:System.Text.RegularExpressions.Regex" />.</summary>
+    </member>
+    <member name="T:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory.Runner">
+      <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+      <summary>Scan the <paramref name="inputSpan" /> starting from base.runtextstart for the next match.</summary>
+      <param name="inputSpan">The text being scanned by the regular expression.</param>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+      <summary>Search <paramref name="inputSpan" /> starting from base.runtextpos for the next location a match could possibly start.</summary>
+      <param name="inputSpan">The text being scanned by the regular expression.</param>
+      <returns>true if a possible match was found; false if no more matches are possible.</returns>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.RegexRepeatedSpaceChars_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+      <summary>Determine whether <paramref name="inputSpan" /> at base.runtextpos is a match for the regular expression.</summary>
+      <param name="inputSpan">The text being scanned by the regular expression.</param>
+      <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+    </member>
+    <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+      <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex" />-derived implementations.</summary>
+    </member>
+    <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+      <summary>Default timeout value set in <see cref="T:System.AppContext" />, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout" /> if none was set.</summary>
+    </member>
+    <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+      <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout" /> is non-infinite.</summary>
+    </member>
+    <member name="M:System.Text.RegularExpressions.Generated.Utilities.IndexOfAnyWhiteSpace(System.ReadOnlySpan{System.Char})">
+      <summary>Finds the next index of any character that matches a whitespace character.</summary>
+    </member>
+    <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_asciiExceptWhiteSpace">
+      <summary>Supports searching for characters in or not in "\0\u0001\u0002\u0003\u0004\u0005\u0006\a\b\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f!\"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u007f".</summary>
+    </member>
+    <member name="N:DotNetExtras.Mail">
+      <summary>Simplifies access and usage of the application configuration settings.</summary>
+    </member>
+  </members>
+</doc>

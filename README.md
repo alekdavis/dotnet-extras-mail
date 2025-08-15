@@ -29,6 +29,9 @@ Zodiac/
 The templates use the [Razor syntax](https://www.codecademy.com/learn/asp-net-i/modules/asp-net-razor-syntax/cheatsheet) and the `Model` placeholders, such as `@Model.Name` or `@Raw(Model.Name)` for text substitutions. The following code will try to load the `es-MX` version of the template and merge the specified template or the best alternative with the provided data:
 
 ```cs
+use DotNetExtras.Mail;
+...
+
 // Data object to be merged with the template.
 Data data = new()
 {
@@ -59,7 +62,7 @@ string subject = template.Subject;
 // of the file template's 'body' element.
 string body = template.Body;
 
-// The template object's 'Language' propoerty will hold the language code 
+// The template object's 'Language' property will hold the language code 
 // actually used by the template.
 string language = template.Language;
 
@@ -75,7 +78,7 @@ For complete documentation, usage details, and code samples, see:
 
 ## Package
 
-Install the latest version of the `DotNetExtras.Mail` Nuget package from:
+Install the latest version of the `DotNetExtras.Mail` NuGet package from:
 
 - [https://www.nuget.org/packages/DotNetExtras.Mail](https://www.nuget.org/packages/DotNetExtras.Mail)
 

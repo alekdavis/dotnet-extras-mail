@@ -1,6 +1,70 @@
 ﻿<!DOCTYPE html ><html lang="en-US"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" href="../css/bulma.css" /><link rel="stylesheet" href="../css/font-awesome.min.css" /><link rel="stylesheet" href="../css/presentationStyle.css" /><link rel="stylesheet" href="../css/vs.min.css" /><script src="../scripts/jquery-3.5.1.min.js"></script><script src="../scripts/clipboard.min.js"></script><script src="../scripts/highlight.min.js"></script><script src="../scripts/presentationStyle.js"></script><title>Introduction</title><meta name="Title" content="Introduction" /><meta name="Help.Id" content="DotNetExtras.Mail.Introduction" /><meta name="Help.ContentType" content="Concepts" /><meta name="guid" content="DotNetExtras.Mail.Introduction" /><meta name="Description" content="The DotNetExtras.Mail library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the API documentation section." /><meta name="tocFile" content="../toc/Root.xml" /></head><body><div class="fixedLayout"><div id="Header" class="fixedHeader"><div class="pageHeader level mb-0 py-2 px-4"><div id="TitleContainer" class="level-left"><div class="level-item"><img src="../icons/Help.png" /></div><div id="DocumentationTitle" class="level-item">DotNetExtras.Mail Library Documentation</div></div><div id="LangFilterSearchContainer" class="level-right"><div class="level-item"><div class="dropdown is-hoverable"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span id="CurrentLanguage"></span><span class="icon is-small"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button></div><div class="dropdown-menu" role="menu"><div id="LanguageSelections" class="dropdown-content"><a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a></div></div></div></div><div class="level-item"><form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;"><div class="field"><div class="control has-icons-left"><input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" /><span class="icon is-small is-left"><i class="fa fa-search"></i></span><button id="SearchButton" type="submit" class="is-hidden"></button></div></div></form></div></div></div></div><div class="fixedContent"><div id="HeaderPrelimContainer" class="level my-1 px-2"><div id="PreliminaryContainer" class="level-left"><div class="level-item"><span class="tag is-warning is-medium">This is preliminary documentation and is subject to change.</span></div></div></div><nav class="breadcrumb my-1 px-2 border-bottom" role="navigation"><ul id="TopicBreadcrumbs" /></nav><div id="ContentContainer" class="columns pl-5 pr-5 fixedContent"><div id="ShowHideTOCColumn" class="column is-hidden-tablet"><a id="ShowHideTOC">Show/Hide TOC</a></div><div id="TOCColumn" class="column is-hidden-mobile"><nav class="toc"><ul id="TableOfContents" class="toc-menu" /></nav></div><div id="Resizer" class="is-hidden"></div><div id="TopicContent" class="column content is-7"><h1>Introduction</h1><div><p>
-        The DotNetExtras.Mail library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the <em>API documentation</em> section.
-      </p></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Other Resources</h4><div><a href="https://www.nuget.org/packages/DotNetExtras.Mail" target="_blank" rel="noopener noreferrer">DotNetExtras.Mail Nuget package</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div id="FooterContent" class="column"><a href="https://github.com/alekdavis/dotnet-extras-mail" target="_blank">Project repository</a><p>Copyright © 2025 Alek Davis</p><div class="feedbackLink">Send comments on this topic to
+        The <em>DotNetExtras.Mail</em> library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the <em>API documentation</em> section.
+      </p></div><h2 id="Overview" class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Overview</h2><div id="IDBABSection"><p>
+          The <em>DotNetExtras.Mail</em> library performs four tasks:
+        </p><ol><li><p>Finds the most appropriate translation of a template for the given language.</p></li><li><p>Loads a localized version of the template.</p></li><li><p>Merges the localized version of the template with the message-specific data.</p></li><li><p>Sets the email subject to the transformed text in the localized template's <span class="code">title</span> element.</p></li></ol><p>
+          Notice that the library does not send emails. It only prepares the content of the email message, which can then be sent using any email-sending library or service.
+        </p><h4 id="Implementation" class="quickLinkHeader">Implementation</h4><p>
+                To get a localized template of a notification, the caller provides the path to the template folder, the template ID (the file name prefix), the requested language code in the format <em>language-CULTURE</em> (where the culture part is optional), such as <span class="code">en-US</span>, <span class="code">es-MX</span>, <span class="code">de</span>, etc., and the template file name extension, such as <span class="code">.html</span>. The library generates the name of the template file by joining the template ID, the language code, and the file name extension using the pre-defined separators (normally, the underscore character separates the template ID from the language and cultures suffix and language is separated from culture by a dash, but different characters can be configured).
+              </p><p>
+                For example, if the template ID is <span class="code">Welcome</span>, the language code is <span class="code">pt-BR</span>, and the file name extension is <span class="code">.html</span>, then the library will look for a file named <span class="code">Welcome_pt-BR.html</span> in the template folder. If the file with such name does not exist, the library will strip the culture part from the suffix and look for a file named <span class="code">Welcome_pt.html</span>. If that file does not exist either, it will look for the default language, e.g. if the default language is <span class="code">en-US</span> it will try <span class="code">Welcome_en-US.html</span>.
+              </p><p>
+                Once the library determines the correct template file version for the requested language, it will keep the template in memory for faster access.
+              </p><p>
+                To merge a localized template with the message-specific data, <span class="code">DotNextExtras.Mail</span> uses <a href="https://github.com/toddams/RazorLight" target="_blank" rel="noopener noreferrer">RazorLight</a>, so the template must be formatted using the Razor syntax. The merge process will replace the placeholders in the template (entities that start with <span class="code">@</span>, such as <span class="code">@Model.RecipientName</span>) with the values from the provided data object, which must be a <span class="code">Dictionary&lt;string, object&gt;</span> or an object with public properties that match the placeholders in the template (such as <span class="code">user.RecipientName</span>).
+              </p><h4 id="Example" class="quickLinkHeader">Example</h4><p>
+               The following example illustrates how to load and merge a localized template for the given language and culture or the best alternative language.
+              </p><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">Localized email template</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+&lt;title&gt;¡Bienvenida @Raw(Model.Zodiac)!&lt;/title&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;Hola @Raw(Model.Name),&lt;/p&gt;
+&lt;p&gt;
+Tu signo del Zodiaco es: @Raw(Model.Zodiac).
+&lt;/p&gt;
+&lt;p&gt;
+&amp;copy; @Model.Year | &lt;a href="#"&gt;Términos&lt;/a&gt; | &lt;a href="#"&gt;Privacidad&lt;/a&gt; | &lt;a href="#"&gt;Darse de baja&lt;/a&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div><div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">Load and merge the template</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using DotNetExtras.Mail;
+...
+
+// Data object to be merged with the template.
+Data data = new()
+{
+    Zodiac = "Géminis",
+    Name = "José",
+    Year = 2025
+};
+
+// Use the defaults in the constructor.
+MailTemplate template = new();
+
+// Load the 'es-MX' version of the 'Zodiac' email notification template 
+// from the 'Samples/Zodiac' folder and merge it with the provided data.
+// If the 'es-MX' version is not available, it will fall back to the 'es' translation.
+// If the 'es' translation is also not available, it will fall back to the default template
+// based on whatever default language suffix was defined previously.
+template.Load("Samples/Zodiac", "Zodiac", "es-MX", ".html", data);
+
+// The template object's 'Subject' property will hold the merged value 
+// of the file template 'title' element, which in this example, will be:
+// ¡Bienvenida Géminis!
+string subject = template.Subject;
+
+// The template object's 'Body' property will hold the merged value 
+// of the file template's 'body' element.
+string body = template.Body;
+
+// The template object's 'Language' property will hold the language code 
+// actually used by the template.
+string language = template.Language;</code></pre></div></div><p>             
+                For the complete example and other samples covering additional scenarios, see the 
+                <a href="https://github.com/alekdavis/dotnet-extras-mail/tree/main/MailTests" target="_blank" rel="noopener noreferrer">unit tests</a>.
+              </p></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>See Also</h2><div id="seeAlsoSection"><h4>Other Resources</h4><div><a href="https://www.nuget.org/packages/DotNetExtras.Mail" target="_blank" rel="noopener noreferrer">DotNetExtras.Mail NuGet package</a></div><div><a href="https://github.com/alekdavis/dotnet-extras-mail" target="_blank" rel="noopener noreferrer">DotNetExtras.Mail project repository</a></div></div></div><div id="InThisArticleColumn" class="column is-hidden-mobile"><nav class="menu sticky is-hidden"><p class="menu-label"><strong>In This Article</strong></p><ul id="InThisArticleMenu" class="menu-list"><li><a class="quickLink">Overview</a><ul class="menu"><li><a class="quickLink">Implementation</a></li><li><a class="quickLink">Example</a></li></ul></li><li><a class="quickLink">See Also</a></li></ul></nav></div></div></div><footer id="PageFooter" class="footer border-top py-3 fixedFooter"><div class="columns"><div id="FooterContent" class="column"><p>Copyright © 2025 Alek Davis</p><div class="feedbackLink">Send comments on this topic to
         <a id="HT_MailLink" href="mailto:alek.davis%40gmail.com?Subject=DotNetExtras.Mail%20Library%20Documentation">Alek Davis</a></div>
         <script type="text/javascript">
         var HT_mailLink = document.getElementById("HT_MailLink");
@@ -18,4 +82,5 @@ $(".toggleSection" ).click(function () {
 $(".toggleSection").keypress(function () {
     SectionExpandCollapseCheckKey(this, event)
 });
+hljs.highlightAll();
 });</script></body></html>

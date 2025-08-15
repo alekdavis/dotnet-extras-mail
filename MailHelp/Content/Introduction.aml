@@ -10,11 +10,139 @@
         The <legacyItalic>DotNetExtras.Mail</legacyItalic> library can find, load, and transform localized email templates. For the detailed description of the library API, code samples, and usage scenarios, see the <legacyItalic>API documentation</legacyItalic> section.
       </para>
     </introduction>
+    
+    <section address="Overview">
+      <title>Overview</title>
+      <content>
+        <para>
+          The <legacyItalic>DotNetExtras.Mail</legacyItalic> library performs four tasks:
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>Finds the most appropriate translation of a template for the given language.</para>
+          </listItem>
+          <listItem>
+            <para>Loads a localized version of the template.</para>
+          </listItem>
+          <listItem>
+            <para>Merges the localized version of the template with the message-specific data.</para>
+          </listItem>
+          <listItem>
+            <para>Sets the email subject to the transformed text in the localized template's <codeInline>title</codeInline> element.</para>
+          </listItem>
+        </list>
+        <para>
+          Notice that the library does not send emails. It only prepares the content of the email message, which can then be sent using any email-sending library or service.
+        </para>
+      </content>
+      
+      <sections>
+        
+        <section address="Implementation">
+          <title>Implementation</title>
+            <content>
+              <para>
+                To get a localized template of a notification, the caller provides the path to the template folder, the template ID (the file name prefix), the requested language code in the format <legacyItalic>language-CULTURE</legacyItalic> (where the culture part is optional), such as <codeInline>en-US</codeInline>, <codeInline>es-MX</codeInline>, <codeInline>de</codeInline>, etc., and the template file name extension, such as <codeInline>.html</codeInline>. The library generates the name of the template file by joining the template ID, the language code, and the file name extension using the pre-defined separators (normally, the underscore character separates the template ID from the language and cultures suffix and language is separated from culture by a dash, but different characters can be configured).
+              </para>
+              <para>
+                For example, if the template ID is <codeInline>Welcome</codeInline>, the language code is <codeInline>pt-BR</codeInline>, and the file name extension is <codeInline>.html</codeInline>, then the library will look for a file named <codeInline>Welcome_pt-BR.html</codeInline> in the template folder. If the file with such name does not exist, the library will strip the culture part from the suffix and look for a file named <codeInline>Welcome_pt.html</codeInline>. If that file does not exist either, it will look for the default language, e.g. if the default language is <codeInline>en-US</codeInline> it will try <codeInline>Welcome_en-US.html</codeInline>.
+              </para>
+              <para>
+                Once the library determines the correct template file version for the requested language, it will keep the template in memory for faster access.
+              </para>
+              <para>
+                To merge a localized template with the message-specific data, <codeInline>DotNextExtras.Mail</codeInline> uses <externalLink><linkText>RazorLight</linkText><linkUri>https://github.com/toddams/RazorLight</linkUri><linkTarget>_blank</linkTarget></externalLink>, so the template must be formatted using the Razor syntax. The merge process will replace the placeholders in the template (entities that start with <codeInline>@</codeInline>, such as <codeInline>@Model.RecipientName</codeInline>) with the values from the provided data object, which must be a <codeInline>Dictionary&lt;string, object&gt;</codeInline> or an object with public properties that match the placeholders in the template (such as <codeInline>user.RecipientName</codeInline>).
+              </para>
+            </content>
+        </section>
+        
+        <section address="Example">
+          <title>Example</title>
+            <content>
+              <para>
+               The following example illustrates how to load and merge a localized template for the given language and culture or the best alternative language.
+              </para>
+              <code language="html" title="Localized email template">
+<![CDATA[
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>¡Bienvenida @Raw(Model.Zodiac)!</title>
+<meta charset="utf-8">
+</head>
+<body>
+<p>Hola @Raw(Model.Name),</p>
+<p>
+Tu signo del Zodiaco es: @Raw(Model.Zodiac).
+</p>
+<p>
+&copy; @Model.Year | <a href="#">Términos</a> | <a href="#">Privacidad</a> | <a href="#">Darse de baja</a>
+</p>
+</body>
+</html>
+]]>                
+              </code>
+              <code language="cs" title="Load and merge the template">
+<![CDATA[
+using DotNetExtras.Mail;
+...
 
+// Data object to be merged with the template.
+Data data = new()
+{
+    Zodiac = "Géminis",
+    Name = "José",
+    Year = 2025
+};
+
+// Use the defaults in the constructor.
+MailTemplate template = new();
+
+// Load the 'es-MX' version of the 'Zodiac' email notification template 
+// from the 'Samples/Zodiac' folder and merge it with the provided data.
+// If the 'es-MX' version is not available, it will fall back to the 'es' translation.
+// If the 'es' translation is also not available, it will fall back to the default template
+// based on whatever default language suffix was defined previously.
+template.Load("Samples/Zodiac", "Zodiac", "es-MX", ".html", data);
+
+// The template object's 'Subject' property will hold the merged value 
+// of the file template 'title' element, which in this example, will be:
+// ¡Bienvenida Géminis!
+string subject = template.Subject;
+
+// The template object's 'Body' property will hold the merged value 
+// of the file template's 'body' element.
+string body = template.Body;
+
+// The template object's 'Language' property will hold the language code 
+// actually used by the template.
+string language = template.Language;
+]]>
+              </code>
+              <para>             
+                For the complete example and other samples covering additional scenarios, see the 
+                <externalLink>
+                  <linkText>unit tests</linkText>
+                  <linkUri>https://github.com/alekdavis/dotnet-extras-mail/tree/main/MailTests</linkUri>
+                  <linkTarget>_blank</linkTarget>
+                </externalLink>.
+              </para>
+            </content>
+        </section>
+    
+      </sections>     
+
+    </section>
+    
     <relatedTopics>
       <externalLink>
-        <linkText>DotNetExtras.Mail Nuget package</linkText>
+        <linkText>DotNetExtras.Mail NuGet package</linkText>
         <linkUri>https://www.nuget.org/packages/DotNetExtras.Mail</linkUri>
+      </externalLink>
+      <externalLink>
+        <linkText>DotNetExtras.Mail project repository</linkText>
+        <linkUri>https://github.com/alekdavis/dotnet-extras-mail</linkUri>
+        <linkTarget>_blank</linkTarget>
       </externalLink>
     </relatedTopics>
   </developerConceptualDocument>

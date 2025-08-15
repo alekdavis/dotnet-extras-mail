@@ -1,0 +1,1704 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetExtras.Common</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetExtras.Common.Enums.AbbreviationAttribute">
+            <summary>
+            Use <see cref="T:DotNetExtras.Common.Enums.AbbreviationAttribute"/> to decorate enumerated fields
+            with the abbreviated versions of the field names.
+            </summary>
+            <remarks>
+            To get the abbreviation value, 
+            use the <see cref="M:DotNetExtras.Common.Enums.EnumExtensions.ToAbbreviation(System.Enum)"/>
+            extension method
+            </remarks>
+            <seealso cref="T:System.Attribute" />
+            <example>
+            <code>
+            private enum TestEnum
+            {
+                [Abbreviation("ABBR1")]
+                LongValue1,
+              
+                [Abbreviation("ABBR2")]
+                LongValue2,
+            } 
+            
+            public void Enum_ToAbbreviation()
+            {
+                TestEnum value = TestEnum.Value1;
+            
+                string? abbreviation = value.ToAbbreviation();
+            
+                Assert.Equal("ABBR1", abbreviation);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:DotNetExtras.Common.Enums.AbbreviationAttribute.Abbreviation">
+            <summary>
+            Abbreviation value.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.AbbreviationAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetExtras.Common.Enums.AbbreviationAttribute"/> class.
+            </summary>
+            <param name="abbreviation">
+            Abbreviation value.
+            </param>
+        </member>
+        <member name="T:DotNetExtras.Common.Enums.EnumExtensions">
+            <summary>
+            Implements extension methods for the <see cref="T:System.Enum"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.EnumExtensions.GetAttribute``1(System.Enum)">
+            <summary>
+            Gets the value of an attribute applied to an enumerated data type.
+            </summary>
+            <typeparam name="T">
+            Data type.
+            </typeparam>
+            <param name="value">
+            Enumerated value.
+            </param>
+            <returns>
+            Attribute value.
+            </returns>
+            <example>
+            <code>
+            DescriptionAttribute? attribute = enumValue.GetAttribute&lt;DescriptionAttribute&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.EnumExtensions.ToDescription(System.Enum)">
+            <summary>
+            Returns the value of the <see cref="T:System.ComponentModel.DescriptionAttribute"/> applied to an enumerated field.
+            </summary>
+            <param name="value">
+            Enumerated field value.
+            </param>
+            <returns>
+            <see cref="T:System.ComponentModel.DescriptionAttribute"/> value (or null, if the attribute is not applied).
+            </returns>
+            <seealso cref="T:System.ComponentModel.DescriptionAttribute"/>
+            <example>
+            <code>
+            private enum TestEnum
+            {
+                [Description("Description of value 1.")]
+                Value1,
+              
+                [Description("Description of value 2.")]
+                Value2,
+            } 
+            
+            public void Enum_ToAbbreviation()
+            {
+                Assert.Equal("Description of value 1.", TestEnum.Value1.ToDescription());
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.EnumExtensions.ToAbbreviation(System.Enum)">
+            <summary>
+            Returns the value of the <see cref="T:DotNetExtras.Common.Enums.AbbreviationAttribute"/> applied to an enumerated field.
+            </summary>
+            <param name="value">
+            Enumerated field value.
+            </param>
+            <returns>
+            <see cref="T:DotNetExtras.Common.Enums.AbbreviationAttribute"/> value (or null, if the attribute is not applied).
+            </returns>
+            <seealso cref="T:DotNetExtras.Common.Enums.AbbreviationAttribute"/>
+            <example>
+            <code>
+            private enum TestEnum
+            {
+                [Abbreviation("VAL1")]
+                Value1,
+              
+                [Abbreviation("VAL2")]
+                Value2,
+            } 
+            
+            public void Enum_ToAbbreviation()
+            {
+                TestEnum value = TestEnum.Value1;
+            
+                string? abbreviation = value.ToAbbreviation();
+            
+                Assert.Equal("VAL1", abbreviation);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.EnumExtensions.ToShortName(System.Enum)">
+             <summary>
+             Returns the value of the <see cref="T:DotNetExtras.Common.Enums.ShortNameAttribute"/> applied to an enumerated field.
+             </summary>
+             <param name="value">
+             Enumerated field value.
+             </param>
+             <returns>
+             <see cref="T:DotNetExtras.Common.Enums.ShortNameAttribute"/> value (or null, if the attribute is not applied).
+             </returns>
+             <seealso cref="T:DotNetExtras.Common.Enums.ShortNameAttribute"/>
+             <example>
+             <code>
+             private enum TestEnum
+             {
+                 [ShortName("V1")]
+                 Value1,
+            
+                 [ShortName("V2")]
+                 Value2,
+             }
+             
+             public void Enum_ToShortName()
+             {
+                 TestEnum value = TestEnum.Value1;
+             
+                 string? shortName = value.ToShortName();
+             
+                 Assert.Equal("V1", abbreviation);
+             }
+             </code>
+             </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Enums.ShortNameAttribute">
+             <summary>
+             Use <see cref="T:DotNetExtras.Common.Enums.ShortNameAttribute"/> to decorate enumerated fields
+             with the shortened versions of the field names.
+             </summary>
+             <seealso cref="T:System.Attribute" />
+             <example>
+             <code>
+             private enum TestEnum
+             {
+                 [ShortName("Short1")]
+                 LongValue1,
+            
+                 [ShortName("Short2")]
+                 LongValue2,
+             }
+             
+             public void Enum_ToShortName()
+             {
+                 TestEnum value = TestEnum.Value1;
+             
+                 string? shortName = value.ToShortName();
+             
+                 Assert.Equal("Short1", abbreviation);
+             }
+             </code>
+             </example>
+        </member>
+        <member name="P:DotNetExtras.Common.Enums.ShortNameAttribute.ShortName">
+            <summary>
+            Short name value.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Enums.ShortNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetExtras.Common.Enums.ShortNameAttribute"/> class.
+            </summary>
+            <param name="shortName">
+            Short name value.
+            </param>
+        </member>
+        <member name="T:DotNetExtras.Common.Exceptions.SafeException">
+            <summary>
+            Use the <see cref="T:DotNetExtras.Common.Exceptions.SafeException"/> class as the base exception for your custom exception classes,
+            so you can easily recognize them in code.
+            This can be handy in a few cases.
+            For example, calling the <see cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetMessages``1(System.Exception,System.Boolean)"/>
+            extension method passing <see cref="T:DotNetExtras.Common.Exceptions.SafeException"/> as the generic type
+            (or calling the <see cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetSafeMessages(System.Exception,System.Boolean)"/>
+            extension method),
+            will only return messages from your custom exceptions
+            which can help you control the error details sent to the other apps
+            and make sure sensitive information is not leaked outside of your application.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Exceptions.SafeException.#ctor">
+            <inheritdoc cref="M:DotNetExtras.Common.Exceptions.SafeException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Exceptions.SafeException.#ctor(System.String)">
+            <inheritdoc cref="M:DotNetExtras.Common.Exceptions.SafeException.#ctor(System.String,System.Exception)"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Exceptions.SafeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetExtras.Common.Exceptions.SafeException"/> class.
+            </summary>
+            <param name="message">
+            Error message.
+            </param>
+            <param name="innerException">
+            Inner exception.
+            </param>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.ExceptionExtensions">
+            <summary>
+            Implements the most frequently used extension methods,
+            such as getting the error messages for both current and all inner exceptions,
+            for the <see cref="T:System.Exception"/> types.
+            </summary>
+            <seealso cref="N:DotNetExtras.Common.Extensions.Specialized"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetMessages``1(System.Exception,System.Boolean)">
+            <summary>
+            Returns messages from the immediate and inner exceptions
+            derived from the specified type.
+            </summary>
+            <param name="ex">
+            Immediate exception.
+            </param>
+            <typeparam name="T">
+            Base type of the exception that will be included in the error message.
+            </typeparam>
+            <param name="raw">
+            If true, original messages and formatting will be preserved; 
+            otherwise, all new lines, tabs and duplicate spaces will be replaced with single spaces
+            and consecutive duplicate messages will be omitted.
+            </param>
+            <returns>
+            Complete error message.
+            </returns>
+            <remarks>
+            Use the <c>T</c> type to identify derivatives of which exceptions will be
+            included in the complete error message.
+            This can be useful if you only want to filter out system and third-party
+            exceptions out of the error message and only include your own.
+            For example, say you have <c>MyBaseException</c> and a number of exceptions
+            that derive from it.
+            If you specify the <c>MyBaseException</c> type as the generic type <c>T</c>,
+            then only <c>MyBaseException</c> and exceptions derived from it will be
+            included in the error message.
+            </remarks>
+            <seealso cref="T:DotNetExtras.Common.Exceptions.SafeException"/>
+            <seealso cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetSafeMessages(System.Exception,System.Boolean)"/>
+            <seealso cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetMessages(System.Exception,System.Boolean)"/>
+            <example>
+            <code>
+            Exception ex = new SafeException("Outer exception", new SafeException("Inner exception 1"), new Exception("Inner exception 2"));
+            
+            // Returns: "Outer exception. Inner exception 1. Inner exception 2."
+            string messages = ex.GetMessages&lt;Exception&gt;();
+            
+            // Returns: "Outer exception. Inner exception 1."
+            messages = ex.GetMessages&lt;SafeException&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetSafeMessages(System.Exception,System.Boolean)">
+            <summary>
+            Gets messages from the immediate and all inner exceptions.
+            </summary>
+            <param name="ex">
+            Immediate exception.
+            </param>
+            <param name="raw">
+            If true, original messages and formatting will be preserved; 
+            otherwise, all new lines, tabs and duplicate spaces will be replaced with single spaces
+            and consecutive duplicate messages will be omitted.
+            </param>
+            <returns>
+            Complete error message.
+            </returns>
+            <seealso cref="T:DotNetExtras.Common.Exceptions.SafeException"/>
+            <seealso cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetSafeMessages(System.Exception,System.Boolean)"/>
+            <seealso cref="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetMessages(System.Exception,System.Boolean)"/>
+            <example>
+            <code>
+            Exception ex = new SafeException("Outer exception", new SafeException("Inner exception 1"), new Exception("Inner exception 2"));
+            
+            // Returns: "Outer exception. Inner exception 1."
+            string messages = ex.GetSafeMessages&lt;SafeException&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ExceptionExtensions.GetMessages(System.Exception,System.Boolean)">
+            <summary>
+            Gets messages from the immediate and all inner exceptions.
+            </summary>
+            <param name="ex">
+            Immediate exception.
+            </param>
+            <param name="raw">
+            If true, original messages and formatting will be preserved; 
+            otherwise, all new lines, tabs and duplicate spaces will be replaced with single spaces
+            and consecutive duplicate messages will be omitted.
+            </param>
+            <returns>
+            Complete error message.
+            </returns>
+            <example>
+            <code>
+            Exception ex = new SafeException("Outer exception", new SafeException("Inner exception 1"), new Exception("Inner exception 2"));
+            
+            // Returns: "Outer exception. Inner exception 1. Inner exception 2."
+            string messages = ex.GetMessages();
+            </code>
+            </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.IEnumerableExtensions">
+            <summary>
+            Implements the most frequently used extension methods,
+            such as getting the count of items in a collection and
+            converting a collection of generic elements to a comma-separated string value,
+            for the <see cref="T:System.Collections.IEnumerable"/> types.
+            </summary>
+            <seealso cref="N:DotNetExtras.Common.Extensions.Specialized"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.IEnumerableExtensions.Count(System.Collections.IEnumerable)">
+            <summary>
+            Returns the number of items in any collection type.
+            </summary>
+            <param name="source">
+            Any type of collection.
+            </param>
+            <returns>
+            Number of items.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.IEnumerableExtensions.ToCsv``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String)">
+             <summary>
+             Converts a collection of generic elements to a comma-separated string value.
+             </summary>
+             <typeparam name="T">
+             Data type of the generic elements.
+             </typeparam>
+             <param name="values">
+             Collection of generic elements.
+             </param>
+             <param name="separator">
+             Value separator.
+             </param>
+             <param name="leftQuote">
+             Left quote enclosing each value.
+             </param>
+             <param name="rightQuote">
+             Right quote enclosing each value 
+             (if left quote is specified and right quote is not, then left quote will be used as right quote).
+             </param>
+             <returns>
+             Comma-(or whatever)-separated string value (or empty string if collection is null or empty).
+             </returns>
+             <example>
+             <code>
+             List&lt;int&gt; numbers = new List&lt;int&gt;(){ 1, 2, 3, 4, 5 };
+             
+             // Output: 1, 2, 3, 4, 5
+             Console.WriteLine(numbers.ToCsv()); 
+            
+             List&lt;string&gt; words = new List&lt;string&gt;(){ "apple", "banana", "cherry" };
+             // Output: "apple", "banana", "cherry"
+             Console.WriteLine(words.ToCsv(", ", "\"", "\"")); 
+             </code>
+             </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.ObjectExtensions">
+            <summary>
+            Implements the most frequently used extension methods,
+            such as deep cloning, checking object equivalency, 
+            getting and setting a nested property value by a compound name, and more,
+            for all (any <see cref="T:System.Object"/>) types.
+            </summary>
+            <seealso cref="N:DotNetExtras.Common.Extensions.Specialized"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.Clone``1(``0)">
+            <summary>
+            Returns a deep copy of a strongly typed object (does not require type casting).
+            </summary>
+            <typeparam name="T">
+            Object type.
+            </typeparam>
+            <param name="original">
+            Original object.
+            </param>
+            <returns>
+            Cloned object.
+            </returns>
+            <remarks>
+            Adapted from 
+            <see href="https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs"/>.
+            </remarks>
+            <example>
+            <code>
+            MyObject? cloneObject = originalObject.Clone();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.Clone(System.Object)">
+            <inheritdoc cref="M:DotNetExtras.Common.Extensions.ObjectExtensions.Clone``1(``0)" path="param|returns|remarks"/>
+            <summary>
+            Returns a deep copy of an object (requires type casting).
+            </summary>
+            <example>
+            <code>
+            MyObject? cloneObject = (MyObject?)originalObject.Clone();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.Copy(System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object})">
+            <summary>
+            Creates a deep copy of the specified object.
+            </summary>
+            <param name="original">
+            The original object to copy.
+            </param>
+            <param name="visited">
+            A dictionary to keep track of visited objects to handle circular references.
+            </param>
+            <returns>
+            A deep copy of the original object.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.CopyBaseTypePrivateFields(System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},System.Object,System.Type)">
+            <summary>
+            Recursively copies the fields of the specified object.
+            </summary>
+            <param name="original">
+            The original object to copy.
+            </param>
+            <param name="visited">
+            A dictionary to keep track of visited objects to handle circular references.
+            </param>
+            <param name="clone">
+            The clone object to populate with copied fields.
+            </param>
+            <param name="type">
+            The type of the object to reflect on.
+            </param>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.CopyFields(System.Object,System.Collections.Generic.IDictionary{System.Object,System.Object},System.Object,System.Type,System.Reflection.BindingFlags,System.Func{System.Reflection.FieldInfo,System.Boolean})">
+            <summary>
+            Copies the fields of the specified object.
+            </summary>
+            <param name="original">
+            The original object to copy.
+            </param>
+            <param name="visited">
+            A dictionary to keep track of visited objects to handle circular references.
+            </param>
+            <param name="clone">
+            The clone object to populate with copied fields.
+            </param>
+            <param name="type">
+            The type of the object to reflect on.
+            </param>
+            <param name="bindingFlags">
+            The binding flags to use for reflection.
+            </param>
+            <param name="filter">
+            An optional filter to apply to the fields.
+            </param>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.IsEmpty(System.Object,System.Boolean)">
+             <summary>
+             Determines whether the specified object 
+             has no properties or fields holding non-null values or non-empty collections.
+             </summary>
+             <param name="source">
+             The object to check.
+             </param>
+             <param name="publicOnly">
+             If <c>true</c>, only public properties and fields will be checked.
+             </param>
+             <returns>
+             <c>true</c> if the object is empty; otherwise, <c>false</c>.
+             </returns>
+             <example>
+             <code>
+             User? u1 = new();
+             Assert.True(u1.IsEmpty());
+            
+             User? u2 = new()
+             {
+                 Id = "123"
+             };
+             Assert.False(u2.IsEmpty());
+             </code>
+             </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.GetPropertyValue(System.Object,System.String)">
+            <summary>
+            Returns the value of the immediate or nested object property.
+            </summary>
+            <param name="source">
+            Object that owns the property.
+            </param>
+            <param name="name">
+            Name of the property (case-insensitive; can be compound with names separated by periods).
+            </param>
+            <returns>
+            Property value (or <c>null</c>, if property does not exists).
+            </returns>
+            <remarks>
+            <para>
+            The code assumes that the property exists;
+            if it does not, the code will return <c>null</c>.
+            </para>
+            <para>
+            The property can be nested.
+            </para>
+            <para>
+            The code handles both class properties and fields.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            string? givenName = user.GetPropertyValue("Name.GivenName");
+            int? age = user.GetPropertyValue("Age");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.SetPropertyValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the new value of an immediate or nested object property
+            (creating parent properties if needed).
+            </summary>
+            <param name="target">
+            Object that owns the property to be set. 
+            </param>
+            <param name="name">
+            Name of the property (case-insensitive; can be compound with names separated by periods).
+            </param>
+            <param name="value">
+            New property value.
+            </param>
+            <remarks>
+            Adapted from <see href="https://stackoverflow.com/a/54006015/52545"/>.
+            </remarks>
+            <example>
+            <code>
+            user.SetPropertyValue("Name.GivenName", "Smith");
+            user.GetPropertyValue("Age", 42);
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.IsEmptyValue(System.Object)">
+            <summary>
+            Determines whether the specified value is empty.
+            A value is considered empty if it is null, an empty string, an empty collection, or an empty enumerable.
+            </summary>
+            <param name="value">
+            The value to check.
+            </param>
+            <returns>
+            <c>true</c> if the value is empty; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.NormalizePropertyName(System.String)">
+            <summary>
+            Converts slashes to periods in the compound property names.
+            </summary>
+            <param name="name">
+            Compound property name.
+            </param>
+            <returns>
+            Normalized property name with slashes replaced by periods.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.ObjectExtensions.IsEquivalentTo(System.Object,System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            Checks if the source object is identical to the target (comparing all instance properties and fields). 
+            </summary>
+            <param name="source">
+            Object we are comparing.
+            </param>
+            <param name="target">
+            Object we're comparing to.
+            </param>
+            <param name="ignoreNullSource">
+            If true, the null value of the source indicates that the property is unchanged.
+            </param>
+            <param name="publicOnly">
+            If true, only public properties and fields will be checked.
+            </param>
+            <returns>
+            True if objects are equivalent, otherwise, false.
+            </returns>
+            <remarks>
+            <para>
+            Adapted from
+            <see href="https://stackoverflow.com/questions/10454519/best-way-to-compare-two-complex-objects"/>.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            User user = new()
+            {
+                Id = 1,
+                Email = "joe@mail.com",
+                Name = new()
+                {
+                    GivenName = "Joe",
+                },
+            };
+            
+            User clone = user.Clone();
+            
+            Assert.True(user.IsEquivalentTo(clone));
+            Assert.True(clone.IsEquivalentTo(user));
+            
+            user.Email = null;
+            
+            // The source object has a null value, so the properties are not equivalent,
+            // unless we ignore null properties in the source object.
+            Assert.True(user.IsEquivalentTo(clone, true));
+            Assert.False(clone.IsEquivalentTo(user, true));
+            </code>
+            </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.DictionaryExtensions">
+            <summary>
+            Implements advanced extension methods for the <see cref="T:System.Collections.Generic.Dictionary`2"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.DictionaryExtensions.ToDynamic(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Converts a string dictionary object to a dynamic object.
+            </summary>
+            <remarks>
+            For non-dictionary objects,
+            use the <see cref="M:DotNetExtras.Common.Extensions.Specialized.ObjectExtensions.ToDynamic``1(``0,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)"/> method instead.
+            </remarks>
+            <param name="source">
+            Dictionary object.
+            </param>
+            <returns>
+            Expando object.
+            </returns>
+            <example>
+            <code>
+            Dictionary&lt;string, object?&gt; dictionary = new()
+            {
+                { "Key1", "Value1" },
+                { "Key2", 123 },
+                { "Key3", true }
+            };
+            
+            dynamic result1 = dictionary.ToDynamic();
+            </code>
+            </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.IListExtensions">
+            <summary>
+            Implements advanced extension methods for the <see cref="T:System.Collections.IList"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.IListExtensions.RemoveMatching(System.Collections.IList,System.Object)">
+             <summary>
+             Removes all items in the list that match the values of 
+             the specified properties in the provided item.
+             </summary>
+             <param name="elements">
+             List items.
+             </param>
+             <param name="elementToMatch">
+             Item holding property values that will need to match for the list elements to be removed.
+             </param>
+             <returns>
+             Number of elements remove.
+             </returns>
+             <example>
+             <code>
+             List&lt;Sample&gt; elements = new()
+             {
+                 new(){ Id = 100, ParentId = 1, Name = "Item1" },
+                 new(){ Id = 200, ParentId = 2, Name = "Item2" },
+                 new(){ Id = 300, ParentId = 2, Name = "Item3" },
+                 new(){ Id = 400, ParentId = 3, Name = "Item4" }
+             };
+             
+             Sample match = new() { ParentId = 2 };
+            
+             // Removes two items:
+             int removedCount = elements.RemoveMatching(match);
+             </code>
+             </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.IntegerExtensions">
+            <summary>
+            Implements advanced extension methods for the integer types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.IntegerExtensions.ToHResult(System.Int32)">
+            <summary>
+            Converts negative integer value to properly formatted HResult value.
+            </summary>
+            <param name="hresult">
+            HResult value.
+            </param>
+            <returns>
+            Hex-formatted hresult value.
+            </returns>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.ObjectExtensions">
+            <summary>
+            Implements advanced extension methods for the <see cref="T:System.Object"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.ObjectExtensions.ToDynamic``1(``0,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
+             <summary>
+             Converts any object to a dynamic object.
+             </summary>
+             <remarks>
+             Adapted from
+             <see href="https://stackoverflow.com/questions/42836936/convert-class-to-dynamic-and-add-propertyNames#answer-42837044"/>.
+             For dictionary objects, 
+             use the <see cref="M:DotNetExtras.Common.Extensions.Specialized.DictionaryExtensions.ToDynamic(System.Collections.Generic.Dictionary{System.String,System.Object})"/> method instead.
+             </remarks>
+             <typeparam name="T">
+             Data type of the source object.
+             </typeparam>
+             <param name="source">
+             The original object.
+             </param>
+             <param name="extras">
+             Additional propertyNames to be added to the expando object.
+             </param>
+             <param name="publicOnly">
+             If true, only public properties will be included.
+             </param>
+             <returns>
+             Expando object.
+             </returns>
+             <example>
+             <code>
+             User user = new()
+             {
+                 Name = new()
+                 {
+                     GivenName = "John",
+                     Surname = "Doe"
+                 },
+                 Age = 42,
+                 Mail = "John.Doe@mail.com",
+             };
+            
+             Dictionary&lt;string, object&gt; extras = new()
+             {
+                 { "ExtraProperty", "XYZ" }
+             };
+            
+             dynamic? result = user.ToDynamic(extras);
+             </code>
+             </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.StringExtensions">
+            <summary>
+            Implements advanced extension methods for the <see cref="T:System.String"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToType``1(System.String)">
+            <summary>
+            Converts a string value to the specified type.
+            </summary>
+            <typeparam name="T">
+            Target data type.
+            </typeparam>
+            <param name="source">
+            Original string value.
+            </param>
+            <returns>
+            Converted value or default if conversion failed.
+            </returns>
+            <example>
+            <code>
+            bool b = "true".ToType&lt;bool&gt;();
+            int n = "123".ToType&lt;int&gt;();
+            DateTime dt = "2021-10-11T17:54:38".ToType&lt;DateTime&gt;();
+            DateTimeOffset dto = "2021-10-11T17:54:38-03:30".ToType&lt;DateTimeOffset&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToDateTime(System.String,System.String)">
+            <summary>
+            Converts a string to a <see cref="T:System.DateTime"/> value.
+            </summary>
+            <param name="source">
+            Original value.
+            </param>
+            <param name="format">
+            Optional explicit date/time format.
+            </param>
+            <returns>
+            DateTime value.
+            </returns>
+            <example>
+            <code>
+            DateTime? dt1 = "2023-11-01T11:30:00+00:30".ToDateTime();
+            DateTime? dt2 = "01/11/2023".ToDateTime("dd/MM/yyyy");
+            DateTime? dt3 = "2023-11-01 12:30:00".ToDateTime("yyyy-MM-dd HH:mm:ss");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToDateTimeOffset(System.String,System.String)">
+            <summary>
+            Converts a string to a <see cref="T:System.DateTimeOffset"/> value.
+            </summary>
+            <param name="source">
+            Original value.
+            </param>
+            <param name="format">
+            Optional explicit date/time format.
+            </param>
+            <returns>
+            DateTimeOffset value.
+            </returns>
+            <example>
+            <code>
+            DateTimeOffset? dto1 = "2023-11-01T11:30:00+00:30".ToDateTimeOffset();
+            DateTimeOffset? dto2 = "2023-11-01T11:30:00+03:30".ToDateTimeOffset();
+            DateTimeOffset? dto3 = "2023-12-01 16:30:00 +00:00".ToDateTimeOffset("yyyy-MM-dd HH:mm:ss zzz");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToDate(System.String,System.String)">
+            <summary>
+            Converts a string to a <see cref="T:System.DateOnly"/> value.
+            </summary>
+            <param name="source">
+            Original value.
+            </param>
+            <param name="format">
+            Optional explicit date format.
+            </param>
+            <returns>
+            DateTime value.
+            </returns>
+            <example>
+            <code>
+            DateOnly? d1 = "2023-11-01".ToDateOnly();
+            DateOnly? d2 = "01/11/2023".ToDateOnly("dd/MM/yyyy");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToTime(System.String,System.String)">
+            <summary>
+            Converts a string to a <see cref="T:System.TimeOnly"/> value.
+            </summary>
+            <param name="source">
+            Original value.
+            </param>
+            <param name="format">
+            Optional explicit time format.
+            </param>
+            <returns>
+            DateTime value.
+            </returns>
+            <example>
+            <code>
+            TimeOnly? t1 = "23:11:01".ToTimeOnly();
+            TimeOnly? t2 = "11:35:48 PM".ToTimeOnly("hh:mm:ss tt");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToList``1(System.String,System.String)">
+            <summary>
+            Converts string to a list.
+            </summary>
+            <typeparam name="T">
+            Data type of the list elements.
+            </typeparam>
+            <param name="source">
+            String value.
+            </param>
+            <param name="delimiter">
+            List item delimiter string.
+            </param>
+            <returns>
+            Generic list.
+            </returns>
+            <example>
+            <code>
+            // Will hold: key1=value1, key2=value2
+            List&lt;string&gt; result = "value1|value2|value3".ToList&lt;string&gt;();
+            </code>
+            </example>    
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToArray``1(System.String,System.String,System.StringSplitOptions)">
+            <summary>
+            Converts string to array.
+            </summary>
+            <typeparam name="T">
+            Data type of the array elements.
+            </typeparam>
+            <param name="source">
+            String value.
+            </param>
+            <param name="delimiter">
+            Array item delimiter string.
+            </param>
+            <param name="options">
+            String splitting options.
+            </param>
+            <returns>
+            Generic array.
+            </returns>
+            <example>
+            <code>
+            // Will hold: key1=value1, key2=value2
+            string[] result = "value1|value2|value3".ToArray&lt;string&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToDictionary``2(System.String,System.String,System.String,System.StringSplitOptions,System.StringSplitOptions)">
+            <summary>
+            Converts string to a dictionary.
+            </summary>
+            <typeparam name="TKey">
+            Data type of the dictionary key elements.
+            </typeparam>
+            <typeparam name="TValue">
+            Data type of the dictionary value elements.
+            </typeparam>
+            <param name="source">
+            String value.
+            </param>
+            <param name="delimiter">
+            List item delimiter string.
+            </param>
+            <param name="keyValueSeparator">
+            Name value delimiter string.
+            </param>
+            <param name="optionsPairs">
+            Options for splitting pairs.
+            </param>
+            <param name="optionsKeyValue">
+            Options for splitting key from value.
+            </param>
+            <returns>
+            Generic dictionary.
+            </returns>
+            <example>
+            <code>
+            // Will hold: key1=value1, key2=value2
+            Dictionary&lt;string,string&gt; result = "key1=value1|key2=value2".ToDictionary&lt;string, string&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.ToHashSet``1(System.String,System.String,System.StringSplitOptions)">
+            <summary>
+            Converts string to a hash set.
+            </summary>
+            <typeparam name="T">
+            Data type of the hash set elements.
+            </typeparam>
+            <param name="source">
+            Input string.
+            </param>
+            <param name="delimiter">
+            Delimiter character.
+            </param>
+            <param name="options">
+            String splitting options.
+            </param>
+            <returns>
+            Generic hash set.
+            </returns>
+            <example>
+            <code>
+            // Will hold: [1, 2, 3]
+            HashSet&lt;int&gt;? hashSet = "1|2|3".ToHashSet();
+            
+            // Will hold: ["one", "two", "three"]
+            HashSet&lt;string&gt;? hashSet = "one,two,three".ToHashSet(",");
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.IsJson(System.String)">
+            <summary>
+            Checks if the string contains valid JSON text.
+            </summary>
+            <param name="source">
+            String to test.
+            </param>
+            <returns>
+            True if the string is a valid JSON, otherwise false.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.IsHtml(System.String)">
+            <summary>
+            Checks if the string contains an HTML document.
+            </summary>
+            <remarks>
+            A valid HTML document assumes that test starts with 
+            either `&lt;!DOCTYPE html&gt;` or `&lt;html&gt;` tag.
+            </remarks>
+            <param name="source">
+            String to test.
+            </param>
+            <returns>
+            True if the string contains a valid HTML document, otherwise false.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.StringExtensions.EscapeLdapValue(System.String)">
+            <summary>
+            Escapes special LDAP characters.
+            </summary>
+            <param name="input">
+            String value.
+            </param>
+            <returns>
+            Escaped value.
+            </returns>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.Specialized.TypeExtensions">
+            <summary>
+            Implements advanced extension methods for the <see cref="T:System.Type"/> types.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.TypeExtensions.IsSimple(System.Type)">
+            <summary>
+            Determine whether the specified type is simple 
+            (i.e. enum, string, number, GUID, date, time, offset, etc.) 
+            or complex (i.e. custom class with public properties and methods, list, array, etc.).
+            </summary>
+            <param name="type">
+            Data type.
+            </param>
+            <returns>
+            True if the type is simple; otherwise, false.
+            </returns>
+            <remarks>
+            Adapted from 
+            https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs
+            for object cloning, but also see
+            <see href="http://stackoverflow.com/questions/2442534/how-to-test-if-type-is-primitive"/>
+            and <see href="https://gist.github.com/jonathanconway/3330614"/>.
+            </remarks>
+            <example>
+            <code>
+            Console.WriteLine(typeof(int).IsSimple()); // True
+            Console.WriteLine(typeof(string).IsSimple()); // True
+            Console.WriteLine(typeof(DateTime).IsSimple()); // True
+            Console.WriteLine(typeof(Guid).IsSimple()); // True
+            Console.WriteLine(typeof(Employee).IsSimple()); // False
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.Specialized.TypeExtensions.IsPrimitive(System.Type)">
+            <summary>
+            Determine whether the specified type is a primitive type.
+            </summary>
+            <param name="type">
+            Data type.
+            </param>
+            <returns>
+            True if the specified type is a primitive type; otherwise, false.
+            </returns>
+            <remarks>
+            Adapted from 
+            <see href="https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs"/>
+            for object cloning.
+            </remarks>
+        </member>
+        <member name="T:DotNetExtras.Common.Extensions.StringExtensions">
+            <summary>
+            Implements the most frequently used extension methods,
+            such as escaping special characters, making sure the sting ends ina punctuation character, etc.,
+            for the <see cref="T:System.String"/> types.
+            </summary>
+            <seealso cref="N:DotNetExtras.Common.Extensions.Specialized"/>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.StringExtensions.Escape(System.String,System.Char,System.String)">
+            <summary>
+            Escapes specific characters in a string.
+            </summary>
+            <param name="source">
+            String value.
+            </param>
+            <param name="escapeChar">
+            Specifies the character that must be escaped.
+            </param>
+            <param name="replacementString">
+            Specifies the replacement string for the escaped character 
+            (may need to include the escaped character).
+            </param>
+            <returns>
+            String value with properly escaped character.
+            </returns>
+            <example>
+            <code>
+            // escaped = in "It''s a test".
+            string escaped = "It's a test".Escape();
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Extensions.StringExtensions.ToSentence(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Appends a period at the end of the string,
+            unless it already ends with one of the punctuation characters:
+            ,.!?;:
+            </summary>
+            <param name="source">
+            Input string.
+            </param>
+            <param name="trimStart">
+            Indicates that white space characters must be trimmed from the string start.
+            </param>
+            <param name="trimEnd">
+            Indicates that white space characters must be trimmed from the string end.
+            </param>
+            <returns>
+            Input string that has a valid punctuation string at the end.
+            </returns>
+            <example>
+            <code>
+            // PRINTS: "Hello, world."
+            Console.WriteLine(" Hello, world  ".ToSentence());
+            </code>
+            </example>
+        </member>
+        <member name="T:DotNetExtras.Common.Json.JsonExtensions">
+            <summary>
+            Implements extension methods for data conversion to and from JSON strings.
+            </summary>
+        </member>
+        <member name="M:DotNetExtras.Common.Json.JsonExtensions.ToJson(System.Object,System.Boolean)">
+            <summary>
+            Converts an object to a JSON string.
+            </summary>
+            <param name="source">
+            Source object.
+            </param>
+            <param name="indented">
+            If true, serialized JSON elements will be indented.
+            </param>
+            <returns>
+            JSON string.
+            </returns>
+            <example>
+            <code>
+            Sample sample = new Sample(){ Name = "John", Age = 30 };
+            
+            // Prints unformatted JSON version of the object.
+            Console.WriteLine(sample.ToJson());
+            
+            // Prints formatted JSON version of the object.
+            Console.WriteLine(sample.ToJson(true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.Json.JsonExtensions.FromJson``1(System.String)">
+            <summary>
+            Converts a JSON string to an object.
+            </summary>
+            <typeparam name="T">
+            Target data type.
+            </typeparam>
+            <param name="json">
+            Original value.
+            </param>
+            <returns>
+            Converted value or default if conversion failed.
+            </returns>
+            <remarks>
+            Enumerated properties in the JSON string are assumed to hold the 
+            field names, i.e. string, not integer, values.
+            </remarks>
+            <example>
+            <code>
+            User? user = "{\"id\":123,\"name\":\"John\"}".FromJson&lt;User&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="T:DotNetExtras.Common.NameOf">
+            <summary>
+            Think of the <see cref="T:DotNetExtras.Common.NameOf"/> class as the 
+            <c><see href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/nameof">nameof</see></c> 
+            expression on steroids that can generate fully qualified or partial names of
+            variables, types, or members in the original case or <c>camelCase</c> notation.
+            </summary>
+            <remarks>
+            <para>
+            When applying the <see cref="T:DotNetExtras.Common.NameOf"/> methods to types (vs. object properties),
+            use it with the <c>nameof</c> expression.
+            </para>
+            <para>
+            Special characters (<c>?</c>, <c>!</c>, <c>@</c>) will be removed from the object property names.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            // PRINT: Class.Parent.ChildProp
+            Console.WriteLine(NameOf.Full(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: class.parent.childProp
+            Console.WriteLine(NameOf.Full(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: object.Parent.ChildProp
+            Console.WriteLine(NameOf.Full(myObject?.Parent?.ChildProp));
+            
+            // PRINT: object.parent.childProp
+            Console.WriteLine(NameOf.Full(myObject?.Parent?.ChildProp, true));
+            
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Long(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Long(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Long(myObject?.Parent?.ChildProp));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Long(myObject?.Parent?.ChildProp, true));
+            
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Short(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Short(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Short(myObject?.Parent?.ChildProp));
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Short(myObject?.Parent?.ChildProp, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Full(System.Object,System.Boolean,System.String)">
+            <summary>
+            Returns full name of the object, class, type, or property.
+            </summary>
+            <param name="caller">
+            Object, class, type, or property.
+            </param>
+            <param name="camelCase">
+            Indicates whether to return the name in <c>camelCase</c>.
+            </param>
+            <param name="name">
+            Must be omitted.
+            </param>
+            <returns>
+            Full name including all compound parts.
+            </returns>
+            <example>
+            <code>
+            // PRINT: Class.Parent.ChildProp
+            Console.WriteLine(NameOf.Full(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: class.parent.childProp
+            Console.WriteLine(NameOf.Full(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: object.Parent.ChildProp
+            Console.WriteLine(NameOf.Full(myObject?.Parent?.ChildProp));
+            
+            // PRINT: object.parent.childProp
+            Console.WriteLine(NameOf.Full(myObject?.Parent?.ChildProp, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Long(System.Object,System.Boolean,System.String)">
+            <inheritdoc cref="M:DotNetExtras.Common.NameOf.Full(System.Object,System.Boolean,System.String)" path="param|remarks"/>
+            <summary>
+            Returns the partial name of the object, class, type, or property
+            omitting the entry before the first period (counting from left to right).
+            </summary>
+            <returns>
+            Name without the first (left) compound prefix.
+            </returns>
+            <remarks>
+            If the name does not include any compound parts, it will be returned as-is.
+            </remarks>
+            <example>
+            <code>
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Long(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Long(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Long(myObject?.Parent?.ChildProp));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Long(myObject?.Parent?.ChildProp, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Short(System.Object,System.Boolean,System.String)">
+            <inheritdoc cref="M:DotNetExtras.Common.NameOf.Full(System.Object,System.Boolean,System.String)" path="param|remarks"/>
+            <summary>
+            Returns the short name of the immediate object property (same as nameof()).
+            </summary>
+            <returns>
+            Short (immediate) name (without compound prefix).
+            </returns>
+            <example>
+            <code>
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Short(nameof(Class.Parent.ChildProp)));
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Short(nameof(Class.Parent.ChildProp), true));
+            
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Short(myObject?.Parent?.ChildProp));
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Short(myObject?.Parent?.ChildProp, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Skip(System.Object,System.Int32,System.Boolean,System.String)">
+            <inheritdoc cref="M:DotNetExtras.Common.NameOf.Full(System.Object,System.Boolean,System.String)" path="param|remarks"/>
+            <summary>
+            Returns a shortened name of the object, class, type, or property
+            after removing the specified number of compound prefixes or suffixes.
+            </summary>
+            <param name="caller">
+            Full or partial property name (can also be referenced using <c>nameof</c>).
+            </param>
+            <param name="count">
+            Number of parts to be excluded from the result.
+            A positive number indicates skipping from the left,
+            a negative number indicates skipping from the right.
+            If the skipped number is bigger than the number of parts,
+            an empty string will be returned.
+            </param>
+            <param name="camelCase">
+            If true, parameter names will be converted to <c>camelCase</c>.
+            </param>
+            <param name="name">
+            Must be omitted.
+            </param>
+            <returns>
+            Shortened name.
+            </returns>
+            <example>
+            <code>
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Skip(nameof(Class.Parent.ChildProp), 1));
+            
+            // PRINT: Class.Parent
+            Console.WriteLine(NameOf.Skip(nameof(Class.Parent.ChildProp), -1));
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Skip(nameof(Class.Parent.ChildProp), 2, true));
+            
+            // PRINT: class
+            Console.WriteLine(NameOf.Skip(nameof(Class.Parent.ChildProp), -2, true));
+            
+            // PRINT: Parent.ChildProp
+            Console.WriteLine(NameOf.Skip(object.Parent?.ChildProp), 1);
+            
+            // PRINT: object.Parent
+            Console.WriteLine(NameOf.Skip(object.Parent?.ChildProp), -1);
+            
+            // PRINT: childProp
+            Console.WriteLine(NameOf.Skip(object.Parent?.ChildProp, 2, true));
+            
+            // PRINT: object
+            Console.WriteLine(NameOf.Skip(object.Parent?.ChildProp, -2, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Keep(System.Object,System.Int32,System.Boolean,System.String)">
+            <inheritdoc cref="M:DotNetExtras.Common.NameOf.Full(System.Object,System.Boolean,System.String)" path="param|remarks"/>
+            <summary>
+            Returns a shortened name of the object, class, type, or property
+            keeping the specified number of compound prefixes or suffixes.
+            </summary>
+            <param name="caller">
+            Full or partial property name (can also be referenced using <c>nameof</c>).
+            </param>
+            <param name="count">
+            Number of parts to be included in the result.
+            A positive number indicates including from the left,
+            a negative number indicates including from the right.
+            If the kept number is bigger than the number of parts,
+            an empty string will be returned.
+            </param>
+            <param name="camelCase">
+            If true, parameter names will be converted to <c>camelCase</c>.
+            </param>
+            <param name="name">
+            Must be omitted.
+            </param>
+            <returns>
+            Shortened name.
+            </returns>
+            <example>
+            <code>
+            // PRINT: Class
+            Console.WriteLine(NameOf.Keep(nameof(Class.Parent.ChildProp), 1));
+            
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Keep(nameof(Class.Parent.ChildProp), -1));
+            
+            // PRINT: class.parent
+            Console.WriteLine(NameOf.Keep(nameof(Class.Parent.ChildProp), 2, true));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Keep(nameof(Class.Parent.ChildProp), -2, true));
+            
+            // PRINT: object
+            Console.WriteLine(NameOf.Keep(object.Parent?.ChildProp), 1);
+            
+            // PRINT: ChildProp
+            Console.WriteLine(NameOf.Keep(object.Parent?.ChildProp), -1);
+            
+            // PRINT: object.parent
+            Console.WriteLine(NameOf.Keep(object.Parent?.ChildProp, 2, true));
+            
+            // PRINT: parent.childProp
+            Console.WriteLine(NameOf.Keep(object.Parent?.ChildProp, -2, true));
+            </code>
+            </example>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.Normalize(System.String,System.Boolean)">
+            <summary>
+            Removes special characters (<c>?</c>, <c>!</c>, <c>@</c>) from a compound object property name.
+            </summary>
+            <param name="name">
+            Compound property name, such as <c>myObject?.PropertyX!.Value</c>.
+            </param>
+            <param name="camelCase">
+            If true, the normalized name will be converted to camelCase.
+            </param>
+            <returns>
+            Normalized compound property name.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.NameOf.RemoveNameOf(System.String)">
+            <summary>
+            Removes <c>nameof</c> from the name.
+            </summary>
+            <param name="name">
+            Name that may the leading <c>nameof</c> prefix.
+            </param>
+            <returns>
+            Normalized name.
+            </returns>
+        </member>
+        <member name="T:DotNetExtras.Common.PrimaryAssembly">
+            <summary>
+            Returns the most frequently used attributes 
+            (company, copyright, product, version, title) 
+            of the running application's primary assembly.
+            </summary>
+            <remarks>
+            <para>
+            The primary assembly is probed in the following order:
+            </para>
+            <list type="number">
+            <item><see cref="M:System.Reflection.Assembly.GetEntryAssembly"/></item>
+            <item><see cref="M:System.Reflection.Assembly.GetCallingAssembly"/></item>
+            <item><see cref="M:System.Reflection.Assembly.GetExecutingAssembly"/></item>
+            <item><see cref="M:System.Reflection.Assembly.GetAssembly(System.Type)"/> implementing the <see cref="T:DotNetExtras.Common.PrimaryAssembly"/> class</item>
+            </list>
+            <para>
+            Adapted from the
+            <see href="https://www.c-sharpcorner.com/UploadFile/ravesoft/access-assemblyinfo-file-and-get-product-informations">Access AssemblyInfo File and Get Product Informations</see> article by Ravee Rasaiyah.
+            </para>
+            </remarks>
+            <example>
+            <code>
+            string company   = PrimaryAssembly.Company;
+            string copyright = PrimaryAssembly.Copyright;
+            string product   = PrimaryAssembly.Product;
+            string version   = PrimaryAssembly.Version;
+            string title     = PrimaryAssembly.Title;
+            </code>
+            </example>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Company">
+            <summary>
+            Returns the company name defined in the
+            <see cref="T:System.Reflection.AssemblyCompanyAttribute"/> 
+            of the primary assembly.
+            </summary>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Copyright">
+            <summary>
+            Returns the copyright message defined in the 
+            <see cref="T:System.Reflection.AssemblyCopyrightAttribute"/> 
+            of the primary assembly.
+            </summary>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Description">
+            <summary>
+            Returns the assembly description defined in the 
+            <see cref="T:System.Reflection.AssemblyDescriptionAttribute"/> 
+            of the primary assembly.
+            </summary>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Product">
+            <summary>
+            Returns the product name defined in the 
+            <see cref="T:System.Reflection.AssemblyProductAttribute"/> 
+            of the primary assembly.
+            </summary>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Title">
+            <summary>
+            Returns the assembly title defined in the 
+            <see cref="T:System.Reflection.AssemblyTitleAttribute"/> 
+            of the primary assembly.
+            </summary>
+        </member>
+        <member name="P:DotNetExtras.Common.PrimaryAssembly.Version">
+            <summary>
+            Returns the version of the assembly file defined in the 
+            <see cref="T:System.Reflection.AssemblyFileVersionAttribute"/> 
+            of the primary assembly.
+            </summary>
+            <remarks>
+            For additional information about assembly and file versions, see
+            <see href="https://stackoverflow.com/questions/64602/what-are-differences-between-assemblyversion-assemblyfileversion-and-assemblyin#answer-65062"/>.
+            </remarks>
+        </member>
+        <member name="M:DotNetExtras.Common.PrimaryAssembly.GetAssembly(System.Type)">
+            <summary>
+            Returns the main application assembly
+            or the assembly implementing the specified type.
+            </summary>
+            <param name="type">
+            Optional type of the class implemented in the assembly.
+            </param>
+            <returns>
+            Current assembly or the assembly implementing the specified type.
+            </returns>
+            <remarks>
+            If type is not specified, 
+            assemblies are probed in the following order:
+            1. `Assembly.GetEntryAssembly()` 
+            2. `Assembly.GetCallingAssembly()`
+            3. `Assembly.GetExecutingAssembly()`,
+            4. `Assembly.GetAssembly(typeof(PrimaryAssembly))`
+            </remarks>
+        </member>
+        <member name="M:DotNetExtras.Common.PrimaryAssembly.GetCustomAttribute``1">
+            <summary>
+            Returns the custom assembly attribute.
+            </summary>
+            <typeparam name="T">
+            Attribute data type.
+            </typeparam>
+            <returns>
+            Attribute for the matching type.
+            </returns>
+        </member>
+        <member name="T:DotNetExtras.Common.RegularExpressions.RegexString">
+            <summary>
+            Implements common regular expressions.
+            </summary>
+            <remarks>
+            This class is not declared as static because a static class cannot be extended. 
+            If you extend this class, you can access both these regular expressions
+            and your custom regular expressions from your derived class.
+            </remarks>
+        </member>
+        <member name="F:DotNetExtras.Common.RegularExpressions.RegexString.Guid">
+            <summary>
+            A regular expression for validating GUID/UUID values:
+            ^[({]?[a-fA-F0-9]{8}[-]?([a-fA-F0-9]{4}[-]?){3}[a-fA-F0-9]{12}[})]?$
+            </summary>
+            <remarks>
+            <para>
+            This regular expression allows GUID/UUID values to be enclosed in parentheses or braces
+            and allows hyphens to be optional (also, can use upper an lower letters a-f).
+            </para>
+            <para>
+            Adapted from <see href="https://stackoverflow.com/questions/11040707/c-sharp-regex-for-guid"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:DotNetExtras.Common.RegularExpressions.RegexString.EmailAddress">
+            <summary>
+            A simplified regular expression for validating Azure-compliant email addresses:
+            (?=^.{5,64}$)^[a-z0-9!#$%&amp;'+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$
+            </summary>
+            <remarks>
+            <para>
+            Adapted from
+            <see href="https://stackoverflow.com/questions/16167983/best-regular-expression-for-email-validation-in-c-sharp"/> 
+            except that instead of using the <c>\A</c> and <c>\Z</c> modifiers
+            identifying the beginning and end of the string anchors
+            it uses the standard regular expression <c>^</c >and <c>$</c> anchors
+            (<see href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions"/>).
+            </para>
+            <para>
+            Do not allow asterisk because it may interfere with some Azure queries.
+            </para>
+            <para>
+            Max length is set to 64 chars due to Azure limitations 
+            (how it handles the <c>mailNickname</c> and <c>userPrincipalAttribute</c>).
+            </para>
+            </remarks>
+        </member>
+        <member name="F:DotNetExtras.Common.RegularExpressions.RegexString.PhoneNumber">
+            <summary>
+            The phone number format: ^(\+|00)[1-9][0-9 \-\(\)\.]{7,32}$
+            </summary>
+            <remarks>
+            Adapted from
+            <see href="https://stackoverflow.com/a/60490067/52545"/>.
+            </remarks>
+        </member>
+        <member name="T:DotNetExtras.Common.Utilities.ArrayTraverse">
+            <summary>
+            Implements extension methods for array traversals.
+            </summary>
+            <remarks>
+            Adapted from 
+            https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs
+            for deep cloning.
+            </remarks>
+        </member>
+        <member name="T:DotNetExtras.Common.Utilities.ExtensionUtilities">
+            <summary>
+            Implements extension methods applicable to arrays.
+            </summary>
+            <remarks>
+            Adapted from 
+            <see href="https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs"/>
+            for deep cloning.
+            </remarks>
+        </member>
+        <member name="T:DotNetExtras.Common.Utilities.ReferenceEqualityComparer">
+            <summary>
+            Implements reference equality operations for deep cloning.
+            </summary>
+            <remarks>
+            Adapted from https://github.com/Burtsev-Alexey/net-object-deep-copy/blob/master/ObjectExtensions.cs
+            for deep cloning.
+            </remarks>
+        </member>
+        <member name="M:DotNetExtras.Common.Utilities.ReferenceEqualityComparer.Equals(System.Object,System.Object)">
+            <summary>
+            Determines whether the two objects are equal.
+            </summary>
+            <param name="left">
+            One object.
+            </param>
+            <param name="right">
+            Another object.
+            </param>
+            <returns>
+            True if the two objects are equal; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:DotNetExtras.Common.Utilities.ReferenceEqualityComparer.GetHashCode(System.Object)">
+            <summary>
+            Returns the hash code for the specified object.
+            </summary>
+            <param name="source">
+            Source object.
+            </param>
+            <returns>
+            Object's hash code.
+            </returns>
+        </member>
+    </members>
+</doc>

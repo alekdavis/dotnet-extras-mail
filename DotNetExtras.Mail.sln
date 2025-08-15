@@ -17,6 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".README", ".README", "{7ACE
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NUGET", ".NUGET", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		publish.ps1 = publish.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +37,7 @@ Global
 		{AF2FA63B-06E0-477C-9CD7-C3076345C558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF2FA63B-06E0-477C-9CD7-C3076345C558}.Release|Any CPU.Build.0 = Release|Any CPU
 		{584F379D-22FE-4AF9-9179-0B666EC4BD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{584F379D-22FE-4AF9-9179-0B666EC4BD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{584F379D-22FE-4AF9-9179-0B666EC4BD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{584F379D-22FE-4AF9-9179-0B666EC4BD10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

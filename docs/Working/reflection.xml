@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<reflection>
+  <assemblies>
+    <assembly name="DotNetExtras.Mail">
+      <assemblydata version="1.0.1.0" culture="" key="" hash="SHA1" />
+      <attributes>
+        <attribute>
+          <type api="T:System.Runtime.CompilerServices.ExtensionAttribute" ref="true" />
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyCompanyAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>Alek Davis</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyConfigurationAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>Release</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyCopyrightAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>© 2025 Alek Davis</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyDescriptionAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>A .NET Core library implementing mail template functionality based on the Razor syntax.</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyFileVersionAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>1.0.1.0</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyInformationalVersionAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>1.0.1</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyProductAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>DotNetExtras.Mail</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyTitleAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>DotNetExtras.Mail</value>
+          </argument>
+        </attribute>
+        <attribute>
+          <type api="T:System.Reflection.AssemblyMetadataAttribute" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>RepositoryUrl</value>
+          </argument>
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>https://github.com/alekdavis/dotnet-extras-mail</value>
+          </argument>
+        </attribute>
+      </attributes>
+    </assembly>
+  </assemblies>
+  <apis>
+    <api id="N:DotNetExtras.Mail">
+      <topicdata group="api" />
+      <apidata name="DotNetExtras.Mail" group="namespace" />
+      <elements>
+        <element api="T:DotNetExtras.Mail.MailTemplate" />
+      </elements>
+      <file name="N_DotNetExtras_Mail" />
+    </api>
+    <api id="T:DotNetExtras.Mail.MailTemplate">
+      <topicdata group="api" />
+      <apidata name="MailTemplate" group="type" subgroup="class" />
+      <typedata visibility="public" serializable="false" />
+      <family>
+        <ancestors>
+          <type api="T:System.Object" ref="true" />
+        </ancestors>
+      </family>
+      <elements>
+        <element api="M:DotNetExtras.Mail.MailTemplate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})" />
+        <element api="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Body" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Cached" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Language" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Subject" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Template" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+      </containers>
+      <file name="T_DotNetExtras_Mail_MailTemplate" />
+    </api>
+    <api id="Methods.T:DotNetExtras.Mail.MailTemplate">
+      <topicdata name="MailTemplate" group="list" subgroup="Methods" typeTopicId="T:DotNetExtras.Mail.MailTemplate" />
+      <apidata name="MailTemplate" group="type" subgroup="class" />
+      <typedata visibility="public" serializable="false" />
+      <elements>
+        <element api="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" />
+      </containers>
+      <file name="Methods_T_DotNetExtras_Mail_MailTemplate" />
+    </api>
+    <api id="Properties.T:DotNetExtras.Mail.MailTemplate">
+      <topicdata name="MailTemplate" group="list" subgroup="Properties" typeTopicId="T:DotNetExtras.Mail.MailTemplate" />
+      <apidata name="MailTemplate" group="type" subgroup="class" />
+      <typedata visibility="public" serializable="false" />
+      <elements>
+        <element api="P:DotNetExtras.Mail.MailTemplate.Body" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Cached" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Language" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Subject" />
+        <element api="P:DotNetExtras.Mail.MailTemplate.Template" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" />
+      </containers>
+      <file name="Properties_T_DotNetExtras_Mail_MailTemplate" />
+    </api>
+    <api id="M:DotNetExtras.Mail.MailTemplate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+      <topicdata group="api" />
+      <apidata name=".ctor" group="member" subgroup="constructor" />
+      <memberdata visibility="public" special="true" />
+      <parameters>
+        <parameter name="defaultLanguage" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>en-US</value>
+          </argument>
+        </parameter>
+        <parameter name="defaultTemplateFileExtension" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>.html</value>
+          </argument>
+        </parameter>
+        <parameter name="languageSeparator" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>_</value>
+          </argument>
+        </parameter>
+        <parameter name="subLanguageSeparator" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.String" ref="true" />
+            <value>-</value>
+          </argument>
+        </parameter>
+        <parameter name="languageMap" optional="true">
+          <type nullable="true" api="T:System.Collections.Generic.Dictionary`2" ref="true">
+            <specialization>
+              <type api="T:System.String" ref="true" />
+              <type api="T:System.String" ref="true" />
+            </specialization>
+          </type>
+          <argument>
+            <type api="T:System.Object" ref="true" />
+            <nullValue />
+          </argument>
+        </parameter>
+      </parameters>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="M_DotNetExtras_Mail_MailTemplate__ctor" />
+    </api>
+    <api id="P:DotNetExtras.Mail.MailTemplate.Body">
+      <topicdata group="api" />
+      <apidata name="Body" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Body" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_MailTemplate_Body" />
+    </api>
+    <api id="P:DotNetExtras.Mail.MailTemplate.Cached">
+      <topicdata group="api" />
+      <apidata name="Cached" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Cached" />
+      <returns>
+        <type api="T:System.Boolean" ref="false" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_MailTemplate_Cached" />
+    </api>
+    <api id="P:DotNetExtras.Mail.MailTemplate.Language">
+      <topicdata group="api" />
+      <apidata name="Language" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Language" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_MailTemplate_Language" />
+    </api>
+    <api id="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)">
+      <topicdata group="api" />
+      <apidata name="Load" group="member" subgroup="method" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <parameters>
+        <parameter name="folder">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+        <parameter name="template">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+        <parameter name="language">
+          <type api="T:System.String" ref="true" />
+        </parameter>
+        <parameter name="extension" optional="true">
+          <type nullable="true" api="T:System.String" ref="true" />
+          <argument>
+            <type api="T:System.Object" ref="true" />
+            <nullValue />
+          </argument>
+        </parameter>
+        <parameter name="data" optional="true">
+          <type nullable="true" api="T:System.Object" ref="true" />
+          <argument>
+            <type api="T:System.Object" ref="true" />
+            <nullValue />
+          </argument>
+        </parameter>
+      </parameters>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="M_DotNetExtras_Mail_MailTemplate_Load" />
+    </api>
+    <api id="P:DotNetExtras.Mail.MailTemplate.Subject">
+      <topicdata group="api" />
+      <apidata name="Subject" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Subject" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_MailTemplate_Subject" />
+    </api>
+    <api id="P:DotNetExtras.Mail.MailTemplate.Template">
+      <topicdata group="api" />
+      <apidata name="Template" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Template" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.1" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_MailTemplate_Template" />
+    </api>
+    <api id="R:Project_DotNetExtras.Mail.Help">
+      <topicdata group="root" />
+      <elements>
+        <element api="N:DotNetExtras.Mail" />
+      </elements>
+      <file name="R_Project_DotNetExtras_Mail_Help" />
+    </api>
+  </apis>
+</reflection>

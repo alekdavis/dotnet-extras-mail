@@ -53,7 +53,7 @@
     <Preliminary>True</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <NamespaceSummaries>
-        <NamespaceSummaryItem name="DotNetExtras.Mail" isDocumented="True">Simplifies access and usage of the application configuration settings.</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="DotNetExtras.Mail" isDocumented="True">Simplifies access and usage of the application configuration settings.</NamespaceSummaryItem>
     </NamespaceSummaries>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
     <BinaryTOC>True</BinaryTOC>
@@ -77,7 +77,8 @@
         </configuration>
       </PlugInConfig>
     </PlugInConfigurations>
-    <FooterText>&amp;lt%3ba href=&amp;quot%3bhttps://github.com/alekdavis/dotnet-extras-mail&amp;quot%3b target=&amp;quot%3b_blank&amp;quot%3b&amp;gt%3bProject repository&amp;lt%3b/a&amp;gt%3b</FooterText>
+    <FooterText>
+    </FooterText>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
