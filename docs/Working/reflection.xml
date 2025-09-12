@@ -2,7 +2,7 @@
 <reflection>
   <assemblies>
     <assembly name="DotNetExtras.Mail">
-      <assemblydata version="1.0.1.0" culture="" key="" hash="SHA1" />
+      <assemblydata version="1.0.2.0" culture="" key="" hash="SHA1" />
       <attributes>
         <attribute>
           <type api="T:System.Runtime.CompilerServices.ExtensionAttribute" ref="true" />
@@ -39,14 +39,14 @@
           <type api="T:System.Reflection.AssemblyFileVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.1.0</value>
+            <value>1.0.2.0</value>
           </argument>
         </attribute>
         <attribute>
           <type api="T:System.Reflection.AssemblyInformationalVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.1</value>
+            <value>1.0.2</value>
           </argument>
         </attribute>
         <attribute>
@@ -106,7 +106,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
       </containers>
@@ -121,7 +121,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -141,7 +141,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -196,7 +196,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -216,7 +216,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -236,7 +236,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -256,7 +256,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -296,7 +296,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -316,7 +316,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -336,7 +336,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.1" />
+          <assemblydata version="1.0.2" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
