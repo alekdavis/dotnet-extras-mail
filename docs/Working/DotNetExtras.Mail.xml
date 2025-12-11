@@ -4,6 +4,46 @@
     <name>DotNetExtras.Mail</name>
   </assembly>
   <members>
+    <member name="T:DotNetExtras.Mail.IMailMessage">
+      <summary>
+            Defines basic email message properties.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailMessage.Language">
+      <summary>
+            Returns the language code of the mail message.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailMessage.Subject">
+      <summary>
+            Returns the subject of the mail message.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailMessage.Body">
+      <summary>
+            Returns the body of the mail message.
+            </summary>
+    </member>
+    <member name="T:DotNetExtras.Mail.IMailRecipients">
+      <summary>
+            Defines lists of email message addressees.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailRecipients.To">
+      <summary>
+            Email To addresses.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailRecipients.Cc">
+      <summary>
+            Email CC addresses.
+            </summary>
+    </member>
+    <member name="P:DotNetExtras.Mail.IMailRecipients.Bcc">
+      <summary>
+            Email BCC addresses.
+            </summary>
+    </member>
     <member name="T:DotNetExtras.Mail.MailTemplate">
       <summary>
              Generates an email message for the specific (or matching) language from a localized 

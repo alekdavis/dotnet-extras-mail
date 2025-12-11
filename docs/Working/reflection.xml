@@ -2,7 +2,7 @@
 <reflection>
   <assemblies>
     <assembly name="DotNetExtras.Mail">
-      <assemblydata version="1.0.2.0" culture="" key="" hash="SHA1" />
+      <assemblydata version="1.0.3.0" culture="" key="" hash="SHA1" />
       <attributes>
         <attribute>
           <type api="T:System.Runtime.CompilerServices.ExtensionAttribute" ref="true" />
@@ -39,14 +39,14 @@
           <type api="T:System.Reflection.AssemblyFileVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.2.0</value>
+            <value>1.0.3.0</value>
           </argument>
         </attribute>
         <attribute>
           <type api="T:System.Reflection.AssemblyInformationalVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.2</value>
+            <value>1.0.3</value>
           </argument>
         </attribute>
         <attribute>
@@ -82,9 +82,216 @@
       <topicdata group="api" />
       <apidata name="DotNetExtras.Mail" group="namespace" />
       <elements>
+        <element api="T:DotNetExtras.Mail.IMailMessage" />
+        <element api="T:DotNetExtras.Mail.IMailRecipients" />
         <element api="T:DotNetExtras.Mail.MailTemplate" />
       </elements>
       <file name="N_DotNetExtras_Mail" />
+    </api>
+    <api id="T:DotNetExtras.Mail.IMailMessage">
+      <topicdata group="api" />
+      <apidata name="IMailMessage" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <implementors>
+        <type api="T:DotNetExtras.Mail.MailTemplate" ref="true" />
+      </implementors>
+      <elements>
+        <element api="P:DotNetExtras.Mail.IMailMessage.Body" />
+        <element api="P:DotNetExtras.Mail.IMailMessage.Language" />
+        <element api="P:DotNetExtras.Mail.IMailMessage.Subject" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+      </containers>
+      <file name="T_DotNetExtras_Mail_IMailMessage" />
+    </api>
+    <api id="Properties.T:DotNetExtras.Mail.IMailMessage">
+      <topicdata name="IMailMessage" group="list" subgroup="Properties" typeTopicId="T:DotNetExtras.Mail.IMailMessage" />
+      <apidata name="IMailMessage" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <elements>
+        <element api="P:DotNetExtras.Mail.IMailMessage.Body" />
+        <element api="P:DotNetExtras.Mail.IMailMessage.Language" />
+        <element api="P:DotNetExtras.Mail.IMailMessage.Subject" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailMessage" />
+      </containers>
+      <file name="Properties_T_DotNetExtras_Mail_IMailMessage" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailMessage.Body">
+      <topicdata group="api" />
+      <apidata name="Body" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Body" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailMessage_Body" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailMessage.Language">
+      <topicdata group="api" />
+      <apidata name="Language" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Language" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailMessage_Language" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailMessage.Subject">
+      <topicdata group="api" />
+      <apidata name="Subject" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Subject" />
+      <returns>
+        <type nullable="true" api="T:System.String" ref="true" />
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailMessage_Subject" />
+    </api>
+    <api id="T:DotNetExtras.Mail.IMailRecipients">
+      <topicdata group="api" />
+      <apidata name="IMailRecipients" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <elements>
+        <element api="P:DotNetExtras.Mail.IMailRecipients.Bcc" />
+        <element api="P:DotNetExtras.Mail.IMailRecipients.Cc" />
+        <element api="P:DotNetExtras.Mail.IMailRecipients.To" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+      </containers>
+      <file name="T_DotNetExtras_Mail_IMailRecipients" />
+    </api>
+    <api id="Properties.T:DotNetExtras.Mail.IMailRecipients">
+      <topicdata name="IMailRecipients" group="list" subgroup="Properties" typeTopicId="T:DotNetExtras.Mail.IMailRecipients" />
+      <apidata name="IMailRecipients" group="type" subgroup="interface" />
+      <typedata visibility="public" abstract="true" serializable="false" />
+      <elements>
+        <element api="P:DotNetExtras.Mail.IMailRecipients.Bcc" />
+        <element api="P:DotNetExtras.Mail.IMailRecipients.Cc" />
+        <element api="P:DotNetExtras.Mail.IMailRecipients.To" />
+      </elements>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailRecipients" />
+      </containers>
+      <file name="Properties_T_DotNetExtras_Mail_IMailRecipients" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailRecipients.Bcc">
+      <topicdata group="api" />
+      <apidata name="Bcc" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Bcc" />
+      <returns>
+        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+          <specialization>
+            <type api="T:System.String" ref="true" />
+          </specialization>
+        </type>
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailRecipients" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailRecipients_Bcc" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailRecipients.Cc">
+      <topicdata group="api" />
+      <apidata name="Cc" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_Cc" />
+      <returns>
+        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+          <specialization>
+            <type api="T:System.String" ref="true" />
+          </specialization>
+        </type>
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailRecipients" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailRecipients_Cc" />
+    </api>
+    <api id="P:DotNetExtras.Mail.IMailRecipients.To">
+      <topicdata group="api" />
+      <apidata name="To" group="member" subgroup="property" />
+      <memberdata visibility="public" />
+      <proceduredata abstract="true" virtual="true" />
+      <propertydata get="true" />
+      <getter name="get_To" />
+      <returns>
+        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+          <specialization>
+            <type api="T:System.String" ref="true" />
+          </specialization>
+        </type>
+      </returns>
+      <containers>
+        <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
+          <assemblydata version="1.0.3" />
+          <noAptca />
+        </library>
+        <namespace api="N:DotNetExtras.Mail" />
+        <type api="T:DotNetExtras.Mail.IMailRecipients" ref="true" />
+      </containers>
+      <file name="P_DotNetExtras_Mail_IMailRecipients_To" />
     </api>
     <api id="T:DotNetExtras.Mail.MailTemplate">
       <topicdata group="api" />
@@ -95,6 +302,9 @@
           <type api="T:System.Object" ref="true" />
         </ancestors>
       </family>
+      <implements>
+        <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+      </implements>
       <elements>
         <element api="M:DotNetExtras.Mail.MailTemplate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})" />
         <element api="M:DotNetExtras.Mail.MailTemplate.Load(System.String,System.String,System.String,System.String,System.Object)" />
@@ -106,7 +316,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
       </containers>
@@ -121,7 +331,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -141,7 +351,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -196,7 +406,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -214,9 +424,14 @@
       <returns>
         <type nullable="true" api="T:System.String" ref="true" />
       </returns>
+      <implements>
+        <member api="P:DotNetExtras.Mail.IMailMessage.Body">
+          <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+        </member>
+      </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -236,7 +451,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -254,9 +469,14 @@
       <returns>
         <type nullable="true" api="T:System.String" ref="true" />
       </returns>
+      <implements>
+        <member api="P:DotNetExtras.Mail.IMailMessage.Language">
+          <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+        </member>
+      </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -296,7 +516,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -314,9 +534,14 @@
       <returns>
         <type nullable="true" api="T:System.String" ref="true" />
       </returns>
+      <implements>
+        <member api="P:DotNetExtras.Mail.IMailMessage.Subject">
+          <type api="T:DotNetExtras.Mail.IMailMessage" ref="true" />
+        </member>
+      </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -336,7 +561,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.2" />
+          <assemblydata version="1.0.3" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />

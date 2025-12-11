@@ -74,7 +74,7 @@ namespace DotNetExtras.Mail;
 /// string language = template.Language;
 /// </code>
 /// </example>
-public partial class MailTemplate
+public partial class MailTemplate: IMailMessage
 {
     #region Private properties
     // Default language if localized version is not supported.
