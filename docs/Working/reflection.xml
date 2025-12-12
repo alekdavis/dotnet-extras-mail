@@ -2,7 +2,7 @@
 <reflection>
   <assemblies>
     <assembly name="DotNetExtras.Mail">
-      <assemblydata version="1.0.3.0" culture="" key="" hash="SHA1" />
+      <assemblydata version="1.0.4.0" culture="" key="" hash="SHA1" />
       <attributes>
         <attribute>
           <type api="T:System.Runtime.CompilerServices.ExtensionAttribute" ref="true" />
@@ -39,14 +39,14 @@
           <type api="T:System.Reflection.AssemblyFileVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.3.0</value>
+            <value>1.0.4.0</value>
           </argument>
         </attribute>
         <attribute>
           <type api="T:System.Reflection.AssemblyInformationalVersionAttribute" ref="true" />
           <argument>
             <type api="T:System.String" ref="true" />
-            <value>1.0.3</value>
+            <value>1.0.4</value>
           </argument>
         </attribute>
         <attribute>
@@ -102,7 +102,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
       </containers>
@@ -119,7 +119,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.IMailMessage" />
@@ -138,7 +138,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -158,7 +158,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -178,7 +178,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -197,7 +197,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
       </containers>
@@ -214,7 +214,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.IMailRecipients" />
@@ -229,7 +229,7 @@
       <propertydata get="true" />
       <getter name="get_Bcc" />
       <returns>
-        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+        <type nullable="true" api="T:System.Collections.Generic.ICollection`1" ref="true">
           <specialization>
             <type api="T:System.String" ref="true" />
           </specialization>
@@ -237,7 +237,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -253,7 +253,7 @@
       <propertydata get="true" />
       <getter name="get_Cc" />
       <returns>
-        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+        <type nullable="true" api="T:System.Collections.Generic.ICollection`1" ref="true">
           <specialization>
             <type api="T:System.String" ref="true" />
           </specialization>
@@ -261,7 +261,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -277,7 +277,7 @@
       <propertydata get="true" />
       <getter name="get_To" />
       <returns>
-        <type nullable="true" api="T:System.Collections.Generic.List`1" ref="true">
+        <type nullable="true" api="T:System.Collections.Generic.ICollection`1" ref="true">
           <specialization>
             <type api="T:System.String" ref="true" />
           </specialization>
@@ -285,7 +285,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -316,7 +316,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
       </containers>
@@ -331,7 +331,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -351,7 +351,7 @@
       </elements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
         <type api="T:DotNetExtras.Mail.MailTemplate" />
@@ -406,7 +406,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -431,7 +431,7 @@
       </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -451,7 +451,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -476,7 +476,7 @@
       </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -516,7 +516,7 @@
       </parameters>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -541,7 +541,7 @@
       </implements>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />
@@ -561,7 +561,7 @@
       </returns>
       <containers>
         <library assembly="DotNetExtras.Mail" module="DotNetExtras.Mail" kind="DynamicallyLinkedLibrary">
-          <assemblydata version="1.0.3" />
+          <assemblydata version="1.0.4" />
           <noAptca />
         </library>
         <namespace api="N:DotNetExtras.Mail" />

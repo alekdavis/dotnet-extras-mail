@@ -7,16 +7,16 @@ public interface IMailRecipients
     /// <summary>
     /// Email To addresses.
     /// </summary>
-    List<string>? To { get; }
+    ICollection<string>? To { get; }
 
     /// <summary>
     /// Email CC addresses.
     /// </summary>
-    List<string>? Cc { get; }
+    ICollection<string>? Cc { get; }
 
     /// <summary>
     /// Email BCC addresses.
     /// </summary>
-    List<string>? Bcc { get; }
+    ICollection<string>? Bcc { get; }
 }
 
