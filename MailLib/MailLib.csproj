@@ -21,7 +21,7 @@
     <IncludeSourceRevisionInInformationalVersion>False</IncludeSourceRevisionInInformationalVersion>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageReleaseNotes>Updated dependencies.</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated data types for the interface.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
