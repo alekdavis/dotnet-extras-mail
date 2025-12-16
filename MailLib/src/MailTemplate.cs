@@ -306,7 +306,7 @@ public partial class MailTemplate: IMailMessage
     /// string body = message.Body;
     /// 
     /// // Language will hold the language code actually used by the template.
-    /// string language = mewssage.Language;
+    /// string language = message.Language;
     /// </code>
     /// </example>
     public virtual IMailMessage Load
