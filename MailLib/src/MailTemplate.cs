@@ -297,19 +297,19 @@ public partial class MailTemplate: IMailMessage
     /// };
     /// 
     /// // Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
-    /// template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+    /// IMailMessage message = template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
     /// 
     /// // Subject will hold the merged value of the title element.
-    /// string subject = template.Subject;
+    /// string subject = message.Subject;
     /// 
     /// // Body will hold the merged value of the body element.
-    /// string body = template.Body;
+    /// string body = message.Body;
     /// 
     /// // Language will hold the language code actually used by the template.
-    /// string language = template.Language;
+    /// string language = mewssage.Language;
     /// </code>
     /// </example>
-    public virtual void Load
+    public virtual IMailMessage Load
     (
         string folder,
         string template,
@@ -480,6 +480,8 @@ public partial class MailTemplate: IMailMessage
                 }
             }
         }
+
+        return this;
     }
     #endregion
 

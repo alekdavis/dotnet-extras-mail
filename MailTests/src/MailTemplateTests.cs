@@ -65,12 +65,16 @@ public class MailTemplateTests
             Year = year
         };
         
-        template.Load(_templateFolder, _templateId, language, ".html", data);
+        IMailMessage message = template.Load(_templateFolder, _templateId, language, ".html", data);
 
         Assert.Equal(actualLanguage, template.Language, true);
+        Assert.Equal(actualLanguage, message.Language, true);
         Assert.Contains(data.Zodiac, template.Subject);
+        Assert.Contains(data.Zodiac, message.Subject);
         Assert.Contains(data.Year.ToString() ?? "", template.Body);
+        Assert.Contains(data.Year.ToString() ?? "", message.Body);
         Assert.Contains(data.Name ?? "", template.Body);
+        Assert.Contains(data.Name ?? "", message.Body);
 
         // Because tests execute in random order, we can't see if the template is cached,
         // but if we do another merge, it should definitely be cached.
