@@ -440,7 +440,7 @@ public partial class MailTemplate: IMailMessage
         }
         catch (Exception ex)
         {
-            throw new Exception($"Cannot merge mail template with the supplied data '{data.ToJson()}'.", ex);
+            throw new Exception($"Cannot merge mail template with the supplied data.", ex);
         }
 
         // Retrieve email notification subject from the title tag.
