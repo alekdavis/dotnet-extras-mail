@@ -967,7 +967,9 @@
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.EndNode">
             <summary>
-            Gets the closing tag of the node, null if the node is self-closing.
+            Gets the closing tag of the node.
+            For self-closing nodes, this will reference an internal placeholder
+            that behaves like a null closing tag or might be null.
             </summary>
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.FirstChild">
@@ -1042,6 +1044,11 @@
         <member name="P:HtmlAgilityPack.HtmlNode.OuterLength">
             <summary>
             Gets the length of the entire node, opening and closing tag included.
+            </summary>
+        </member>
+        <member name="P:HtmlAgilityPack.HtmlNode.OriginalOuterLength">
+            <summary>
+            Gets the original outer length. The Current "OuterLength" property return the "OuterHtml.Length" which might contains a different value.
             </summary>
         </member>
         <member name="P:HtmlAgilityPack.HtmlNode.Name">
@@ -1994,6 +2001,12 @@
             </summary>
             <param name="array"></param>
             <param name="arrayIndex"></param>
+        </member>
+        <member name="M:HtmlAgilityPack.HtmlNodeCollection.GetEnumerator">
+            <summary>
+            Get Enumerator
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:HtmlAgilityPack.HtmlNodeCollection.System#Collections#Generic#IEnumerable{HtmlAgilityPack#HtmlNode}#GetEnumerator">
             <summary>

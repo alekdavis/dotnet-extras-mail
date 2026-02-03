@@ -28,12 +28,18 @@
         <see langword="this" /> for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.Activity.AddException(System.Exception,System.Diagnostics.TagList@,System.DateTimeOffset)">
-      <param name="exception" />
-      <param name="tags" />
-      <param name="timestamp" />
+      <summary>Add an <see cref="T:System.Diagnostics.ActivityEvent" /> object containing the exception information to the <see cref="P:System.Diagnostics.Activity.Events" /> list.</summary>
+      <param name="exception">The exception to add to the attached events list.</param>
+      <param name="tags">The tags to add to the exception event.</param>
+      <param name="timestamp">The timestamp to add to the exception event.</param>
+      <returns>
+        <see langword="this" /> for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.Activity.AddLink(System.Diagnostics.ActivityLink)">
-      <param name="link" />
+      <summary>Adds an <see cref="T:System.Diagnostics.ActivityLink" /> to the <see cref="P:System.Diagnostics.Activity.Links" /> list.</summary>
+      <param name="link">The <see cref="T:System.Diagnostics.ActivityLink" /> to add.</param>
+      <returns>
+        <see langword="this" /> for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.Activity.AddTag(System.String,System.Object)">
       <summary>Updates the activity to have a tag with an additional <paramref name="key" /> and <paramref name="value" />.</summary>
@@ -325,7 +331,7 @@
       <summary>Indicates whether the current object is equal to another object of the same type.</summary>
       <param name="value">The object to compare to this instance.</param>
       <returns>
-        <see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+        <see langword="true" /> if the current object is equal to the <paramref name="value" /> parameter; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.Diagnostics.ActivityContext.Equals(System.Object)">
       <summary>Determines whether this instance and a specified <see langword="ActivityContext" /> object have the same value.</summary>
@@ -404,7 +410,7 @@ The possible generic type parameters are <see cref="T:System.Diagnostics.Activit
       <typeparam name="T">The type of the <see langword="Parent" /> property. Should be either <see cref="T:System.String" /> or <see langword="ActivityContext" />.</typeparam>
     </member>
     <member name="P:System.Diagnostics.ActivityCreationOptions`1.Kind">
-      <summary>Gets the activity kind which the activity will be created with.</summary>
+      <summary>Gets the activity kind that the activity will be created with.</summary>
       <returns>One of the enumeration values that represent an activity kind.</returns>
     </member>
     <member name="P:System.Diagnostics.ActivityCreationOptions`1.Links">
@@ -519,7 +525,7 @@ Activity links can be used to represent batched operations where an activity was
       <summary>Indicates whether the current activity link is equal to another activity link.</summary>
       <param name="value">The activity link to compare.</param>
       <returns>
-        <see langword="true" /> if the current activity link is equal to <paramref name="other" />; otherwise, <see langword="false" />.</returns>
+        <see langword="true" /> if the current activity link is equal to <paramref name="value" />; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.Diagnostics.ActivityLink.Equals(System.Object)">
       <summary>Indicates whether the current activity link is equal to another object.</summary>
@@ -556,7 +562,7 @@ Activity links can be used to represent batched operations where an activity was
       <summary>Allows listening to the start and stop activity events and gives the opportunity to decide creating an activity for sampling scenarios.</summary>
     </member>
     <member name="M:System.Diagnostics.ActivityListener.#ctor">
-      <summary>Construct a new activity listener object to start listeneing to the activity events.</summary>
+      <summary>Construct a new activity listener object to start listening to the activity events.</summary>
     </member>
     <member name="M:System.Diagnostics.ActivityListener.Dispose">
       <summary>Unregisters this activity listener object from listening to activity events.</summary>
@@ -569,7 +575,9 @@ Activity links can be used to represent batched operations where an activity was
       <summary>Gets or sets the callback used to listen to the activity stop event.</summary>
       <returns>An activity callback instance used to listen to the activity stop event.</returns>
     </member>
-    <member name="P:System.Diagnostics.ActivityListener.ExceptionRecorder" />
+    <member name="P:System.Diagnostics.ActivityListener.ExceptionRecorder">
+      <summary>Gets or sets the callback used to listen to <see cref="T:System.Diagnostics.Activity" /> events when exceptions are added.</summary>
+    </member>
     <member name="P:System.Diagnostics.ActivityListener.Sample">
       <summary>Gets or sets the callback that is used to decide if creating <see cref="T:System.Diagnostics.Activity" /> objects with a specific data state is allowed.</summary>
       <returns>A sample activity instance.</returns>
@@ -601,10 +609,15 @@ Activity links can be used to represent batched operations where an activity was
     <member name="T:System.Diagnostics.ActivitySource">
       <summary>Provides APIs to create and start <see cref="T:System.Diagnostics.Activity" /> objects and to register <see cref="T:System.Diagnostics.ActivityListener" /> objects to listen to the <see cref="T:System.Diagnostics.Activity" /> events.</summary>
     </member>
+    <member name="M:System.Diagnostics.ActivitySource.#ctor(System.Diagnostics.ActivitySourceOptions)">
+      <summary>Initializes a new instance of <see cref="T:System.Diagnostics.ActivitySource" /> using the <see cref="T:System.Diagnostics.ActivitySourceOptions" />.</summary>
+      <param name="options">The <see cref="T:System.Diagnostics.ActivitySourceOptions" /> object to use for initializing the ActivitySource object.</param>
+    </member>
     <member name="M:System.Diagnostics.ActivitySource.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
-      <param name="name" />
-      <param name="version" />
-      <param name="tags" />
+      <summary>Initializes a new instance of <see cref="T:System.Diagnostics.ActivitySource" /> with the specified input name.</summary>
+      <param name="name">The name of the ActivitySource object.</param>
+      <param name="version">The version of the component publishing the tracing info.</param>
+      <param name="tags">The optional ActivitySource tags.</param>
     </member>
     <member name="M:System.Diagnostics.ActivitySource.#ctor(System.String,System.String)">
       <summary>Constructs an activity source object with the specified <paramref name="name" />.</summary>
@@ -612,7 +625,8 @@ Activity links can be used to represent batched operations where an activity was
       <param name="version">The version of the component publishing the tracing info.</param>
     </member>
     <member name="M:System.Diagnostics.ActivitySource.#ctor(System.String)">
-      <param name="name" />
+      <summary>Initializes a new instance of <see cref="T:System.Diagnostics.ActivitySource" /> with the specified input name.</summary>
+      <param name="name">The name of the ActivitySource object</param>
     </member>
     <member name="M:System.Diagnostics.ActivitySource.AddActivityListener(System.Diagnostics.ActivityListener)">
       <summary>Adds a listener to the activity starting and stopping events.</summary>
@@ -693,10 +707,37 @@ Activity links can be used to represent batched operations where an activity was
       <summary>Returns the activity source name.</summary>
       <returns>A string that represents the activity source name.</returns>
     </member>
-    <member name="P:System.Diagnostics.ActivitySource.Tags" />
+    <member name="P:System.Diagnostics.ActivitySource.Tags">
+      <summary>Gets the tags associated with the ActivitySource.</summary>
+    </member>
+    <member name="P:System.Diagnostics.ActivitySource.TelemetrySchemaUrl">
+      <summary>Gets the telemetry schema URL associated with the ActivitySource.</summary>
+    </member>
     <member name="P:System.Diagnostics.ActivitySource.Version">
       <summary>Returns the activity source version.</summary>
       <returns>A string that represents the activity source version.</returns>
+    </member>
+    <member name="T:System.Diagnostics.ActivitySourceOptions">
+      <summary>Options for creating an <see cref="T:System.Diagnostics.ActivitySource" />.</summary>
+    </member>
+    <member name="M:System.Diagnostics.ActivitySourceOptions.#ctor(System.String)">
+      <summary>Constructs a new instance of <see cref="T:System.Diagnostics.ActivitySourceOptions" />.</summary>
+      <param name="name">The name of the <see cref="T:System.Diagnostics.ActivitySourceOptions" /> object</param>
+    </member>
+    <member name="P:System.Diagnostics.ActivitySourceOptions.Name">
+      <summary>Gets or sets the <see cref="T:System.Diagnostics.ActivitySourceOptions" /> object name. Cannot be <see langword="null" />.</summary>
+    </member>
+    <member name="P:System.Diagnostics.ActivitySourceOptions.Tags">
+      <summary>Gets or sets the optional list of key-value pair tags associated with the <see cref="T:System.Diagnostics.ActivitySourceOptions" />.</summary>
+    </member>
+    <member name="P:System.Diagnostics.ActivitySourceOptions.TelemetrySchemaUrl">
+      <summary>
+        <para>Gets or sets the location of a Schema file that can be retrieved using HTTP or HTTPS protocol.</para>
+      </summary>
+    </member>
+    <member name="P:System.Diagnostics.ActivitySourceOptions.Version">
+      <summary>Gets or sets the <see cref="T:System.Diagnostics.ActivitySourceOptions" /> version.</summary>
+      <returns>The <see cref="T:System.Diagnostics.ActivitySourceOptions" /> version. The default value is the empty string.</returns>
     </member>
     <member name="T:System.Diagnostics.ActivitySpanId">
       <summary>Represents a <see cref="P:System.Diagnostics.Activity.SpanId" /> formatted based on a W3C standard.</summary>
@@ -1084,8 +1125,8 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
     <member name="M:System.Diagnostics.DiagnosticSource.IsEnabled(System.String,System.Object,System.Object)">
       <summary>Verifies it the notification event is enabled.</summary>
       <param name="name">The name of the event being written.</param>
-      <param name="arg1">An object that represents the additional context for IsEnabled. Consumers should expect to receive <see langword="null" /> which may indicate that producer called pure IsEnabled(string) to check if consumer wants to get notifications for such events at all. Based on that, producer may call IsEnabled(string, object, object) again with non-<see langword="null" /> context.</param>
-      <param name="arg2">Optional. An object that represents the additional context for IsEnabled. <see langword="null" /> by default. Consumers should expect to receive <see langword="null" /> which may indicate that producer called pure IsEnabled(string) or producer passed all necessary context in <paramref name="arg1" />.</param>
+      <param name="arg1">An object that represents the additional context for IsEnabled. Consumers should expect to receive <see langword="null" />, which might indicate that producer called pure IsEnabled(string) to check if consumer wants to get notifications for such events at all. Based on that, producer may call IsEnabled(string, object, object) again with non-<see langword="null" /> context.</param>
+      <param name="arg2">Optional. An object that represents the additional context for IsEnabled. <see langword="null" /> by default. Consumers should expect to receive <see langword="null" />, which might indicate that producer called pure IsEnabled(string) or producer passed all necessary context in <paramref name="arg1" />.</param>
       <returns>
         <see langword="true" /> if the notification event is enabled, <see langword="false" /> otherwise.</returns>
     </member>
@@ -1112,9 +1153,11 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <returns>The started activity for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.DiagnosticSource.StartActivity``1(System.Diagnostics.Activity,``0)">
-      <param name="activity" />
-      <param name="args" />
-      <typeparam name="T" />
+      <summary>Starts an <xref data-throw-if-not-resolved="true" uid="System.Diagnostics.Activity"></xref> and writes a start event.</summary>
+      <param name="activity">The <xref data-throw-if-not-resolved="true" uid="System.Diagnostics.Activity"></xref> to be started.</param>
+      <param name="args">An object that represent the value being passed as a payload for the event.</param>
+      <typeparam name="T">The type of the value being passed as a payload for the event.</typeparam>
+      <returns>The started activity for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.DiagnosticSource.StopActivity(System.Diagnostics.Activity,System.Object)">
       <summary>Stops the given <see cref="T:System.Diagnostics.Activity" />, maintains the global <see cref="P:System.Diagnostics.Activity.Current" /> activity, and notifies consumers that the <see cref="T:System.Diagnostics.Activity" /> was stopped.</summary>
@@ -1122,19 +1165,22 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <param name="args">An object that represents the value passed as a payload for the event.</param>
     </member>
     <member name="M:System.Diagnostics.DiagnosticSource.StopActivity``1(System.Diagnostics.Activity,``0)">
-      <param name="activity" />
-      <param name="args" />
-      <typeparam name="T" />
+      <summary>Starts an <xref data-throw-if-not-resolved="true" uid="System.Diagnostics.Activity"></xref> and writes a start event.</summary>
+      <param name="activity">The <xref data-throw-if-not-resolved="true" uid="System.Diagnostics.Activity"></xref> to be started.</param>
+      <param name="args">An object that represent the value being passed as a payload for the event.</param>
+      <typeparam name="T">The type of the value being passed as a payload for the event.</typeparam>
+      <returns>The started activity for convenient chaining.</returns>
     </member>
     <member name="M:System.Diagnostics.DiagnosticSource.Write(System.String,System.Object)">
       <summary>Provides a generic way of logging complex payloads.</summary>
       <param name="name">The name of the event being written.</param>
-      <param name="value">An object that represents the value being passed as a payload for the event. This is often an anonymous type which contains several sub-values.</param>
+      <param name="value">An object that represents the value being passed as a payload for the event. This is often an anonymous type that contains several subvalues.</param>
     </member>
     <member name="M:System.Diagnostics.DiagnosticSource.Write``1(System.String,``0)">
-      <param name="name" />
-      <param name="value" />
-      <typeparam name="T" />
+      <summary>Provides a generic way of logging complex payloads.</summary>
+      <param name="name">The name of the event being written.</param>
+      <param name="value">An object that represents the value being passed as a payload for the event. This is often an anonymous type that contains several subvalues.</param>
+      <typeparam name="T">The type of the value being passed as a payload for the event.</typeparam>
     </member>
     <member name="T:System.Diagnostics.DistributedContextPropagator">
       <summary>An implementation of <see cref="T:System.Diagnostics.DistributedContextPropagator" /> determines if and how distributed context information is encoded and decoded as it traverses the network.
@@ -1156,6 +1202,12 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <summary>Returns a propagator that attempts to act transparently, emitting the same data on outbound network requests that was received on the inbound request.
             When encoding the outbound message, this propagator uses information from the request's root Activity, ignoring any intermediate Activities that may have been created while processing the request.</summary>
       <returns>An instance of the <see cref="T:System.Diagnostics.DistributedContextPropagator" /> class.</returns>
+    </member>
+    <member name="M:System.Diagnostics.DistributedContextPropagator.CreatePreW3CPropagator">
+      <summary>Returns a propagator that encodes and decodes distributed context and baggage information in a backward-compatible manner.</summary>
+    </member>
+    <member name="M:System.Diagnostics.DistributedContextPropagator.CreateW3CPropagator">
+      <summary>Returns a propagator that encodes and decodes distributed context information in accordance with the W3C Trace Context and Baggage specifications.</summary>
     </member>
     <member name="M:System.Diagnostics.DistributedContextPropagator.ExtractBaggage(System.Object,System.Diagnostics.DistributedContextPropagator.PropagatorGetterCallback)">
       <summary>Extracts the baggage key-value pair list from an incoming request represented by the carrier. For example, from the headers of an HTTP request.</summary>
@@ -1199,6 +1251,7 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <param name="fieldValue">The value corresponding to <paramref name="fieldName" />.</param>
     </member>
     <member name="T:System.Diagnostics.ExceptionRecorder">
+      <summary>Defines the callback to be used in <see cref="T:System.Diagnostics.ActivityListener" /> to receive notifications when exceptions are added to the <see cref="T:System.Diagnostics.Activity" />.</summary>
       <param name="activity" />
       <param name="exception" />
       <param name="tags" />
@@ -1474,8 +1527,11 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <param name="tags">The list of tags associated with the measurement.</param>
     </member>
     <member name="M:System.Diagnostics.Metrics.Measurement`1.#ctor(`0,System.Diagnostics.TagList@)">
-      <param name="value" />
-      <param name="tags" />
+      <summary>
+        <para>Initializes a new instance of the Measurement with the provided <paramref name="value" /> and a <see cref="T:System.Diagnostics.TagList" /> containing zero or more associated <paramref name="tags" />.</para>
+      </summary>
+      <param name="value">The value of the measurement.</param>
+      <param name="tags">A <see cref="T:System.Diagnostics.TagList" /> containing the <see cref="T:System.Collections.Generic.KeyValuePair`2" /> tags associated with the measurement.</param>
     </member>
     <member name="M:System.Diagnostics.Metrics.Measurement`1.#ctor(`0,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
       <summary>Initializes a new instance of <see cref="T:System.Diagnostics.Metrics.Measurement`1" /> using the specified value and list of tags.</summary>
@@ -1790,6 +1846,11 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
     <member name="P:System.Diagnostics.Metrics.Meter.Tags">
       <summary>Returns the tags associated with the Meter.</summary>
     </member>
+    <member name="P:System.Diagnostics.Metrics.Meter.TelemetrySchemaUrl">
+      <summary>
+        <para>Gets the location of a Schema File that can be retrieved using HTTP or HTTPS protocol.</para>
+      </summary>
+    </member>
     <member name="P:System.Diagnostics.Metrics.Meter.Version">
       <summary>Gets the Meter version.</summary>
       <returns>The Meter version.</returns>
@@ -1828,9 +1889,9 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
       <summary>Calls all Observable instruments that the listener is listening to, and calls <see cref="M:System.Diagnostics.Metrics.MeterListener.SetMeasurementEventCallback``1(System.Diagnostics.Metrics.MeasurementCallback{``0})" /> with every collected measurement.</summary>
     </member>
     <member name="M:System.Diagnostics.Metrics.MeterListener.SetMeasurementEventCallback``1(System.Diagnostics.Metrics.MeasurementCallback{``0})">
-      <summary>Sets a callback for a specific numeric type to get the measurement recording notification from all instruments which enabled listening and was created with the same specified numeric type.
+      <summary>Sets a callback for a specific numeric type to get the measurement recording notification from all instruments that enabled listening and were created with the same specified numeric type.
             If a measurement of type T is recorded and a callback of type T is registered, that callback will be used.</summary>
-      <param name="measurementCallback">The callback which can be used to get measurement recording of numeric type T.</param>
+      <param name="measurementCallback">The callback that can be used to get measurement recording of numeric type T.</param>
       <typeparam name="T">The type of the numeric measurement.</typeparam>
     </member>
     <member name="M:System.Diagnostics.Metrics.MeterListener.Start">
@@ -1860,6 +1921,11 @@ The characters in <paramref name="idData" /> are not all lower-case hexadecimal 
     </member>
     <member name="P:System.Diagnostics.Metrics.MeterOptions.Tags">
       <summary>The optional list of key-value pair tags associated with the Meter.</summary>
+    </member>
+    <member name="P:System.Diagnostics.Metrics.MeterOptions.TelemetrySchemaUrl">
+      <summary>
+        <para>Gets the location of a Schema File that can be retrieved using HTTP or HTTPS protocol.</para>
+      </summary>
     </member>
     <member name="P:System.Diagnostics.Metrics.MeterOptions.Version">
       <summary>The optional Meter version.</summary>
@@ -1987,7 +2053,7 @@ To create an ObservableUpDownCounter object, use the <see cref="Overload:System.
       <exception cref="T:System.ArgumentNullException">
         <paramref name="array" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentOutOfRangeException">
-        <paramref name="arrayIndex " /> is less than 0 or greater than or equal to the <paramref name="array" /> length.</exception>
+        <paramref name="arrayIndex" /> is less than 0 or greater than or equal to the <paramref name="array" /> length.</exception>
     </member>
     <member name="M:System.Diagnostics.TagList.CopyTo(System.Span{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
       <summary>Copies the contents of this <see cref="T:System.Diagnostics.TagList" /> into a destination <paramref name="tags" /> span.</summary>

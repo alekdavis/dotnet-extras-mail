@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
     <AssemblyName>DotNetExtras.Mail</AssemblyName>
     <RootNamespace>DotNetExtras.Mail</RootNamespace>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <Title>$(AssemblyName)</Title>
     <Authors>Alek Davis</Authors>
     <Description>A .NET Core library implementing mail template functionality based on the Razor syntax.</Description>
-    <Copyright>© 2025 Alek Davis</Copyright>
+    <Copyright>© 2026 Alek Davis</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>$(AssemblyName)</PackageId>
     <PackageProjectUrl>https://alekdavis.github.io/dotnet-extras-mail</PackageProjectUrl>
@@ -32,11 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetExtras.Common" Version="1.0.18" />
+    <PackageReference Include="DotNetExtras.Common" Version="1.0.19" />
     <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.2" />
     <PackageReference Include="RazorLight" Version="2.3.1" />
-    <PackageReference Include="System.Text.Json" Version="10.0.1" />
+    <PackageReference Include="System.Text.Json" Version="10.0.2" />
   </ItemGroup>
 
 </Project>

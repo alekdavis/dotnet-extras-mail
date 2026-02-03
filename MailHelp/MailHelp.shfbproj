@@ -43,7 +43,7 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>DotNetExtras.Mail Library Documentation</HelpTitle>
-    <HelpFileVersion>1.0.2</HelpFileVersion>
+    <HelpFileVersion>1.0.3</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
@@ -60,7 +60,7 @@
     <IncludeFavorites>False</IncludeFavorites>
     <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
     <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
-    <CopyrightText>Copyright \xA9 2025 Alek Davis</CopyrightText>
+    <CopyrightText>Copyright \xA9 2026 Alek Davis</CopyrightText>
     <FeedbackEMailAddress>alek.davis%40gmail.com</FeedbackEMailAddress>
     <FeedbackEMailLinkText>Alek Davis</FeedbackEMailLinkText>
     <VisibleItems>Attributes, Protected</VisibleItems>
