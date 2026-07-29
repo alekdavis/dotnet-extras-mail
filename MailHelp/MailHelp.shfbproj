@@ -43,14 +43,14 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <HelpTitle>DotNetExtras.Mail Library Documentation</HelpTitle>
-    <HelpFileVersion>1.0.10</HelpFileVersion>
+    <HelpFileVersion>1.0.11</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <RootNamespaceTitle>API documentation</RootNamespaceTitle>
     <NamespaceGrouping>True</NamespaceGrouping>
     <MaximumGroupParts>3</MaximumGroupParts>
-    <Preliminary>True</Preliminary>
+    <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="DotNetExtras.Mail" isDocumented="True">Simplifies access and usage of the application configuration settings.</NamespaceSummaryItem>
