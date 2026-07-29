@@ -2,7 +2,7 @@
              Generates an email message for the specific (or matching) language from a localized 
              <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor" target="_blank" rel="noopener noreferrer">Razor template</a>
              file and the provided data object.
-             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_DotNetExtras_Mail.htm">DotNetExtras.Mail</a><br /><strong>Assembly:</strong> DotNetExtras.Mail (in DotNetExtras.Mail.dll) Version: 1.0.8<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">class</span> <span class="identifier">MailTemplate</span> : <span class="identifier">IMailMessage</span></code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">MailTemplate</span></dd></dl><dl class="implementsList"><dt>Implements</dt><dd><a href="T_DotNetExtras_Mail_IMailMessage.htm">IMailMessage</a></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection"><p>
+             </div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Definition</h2><div id="IDBSection"><strong>Namespace:</strong> <a href="N_DotNetExtras_Mail.htm">DotNetExtras.Mail</a><br /><strong>Assembly:</strong> DotNetExtras.Mail (in DotNetExtras.Mail.dll) Version: 1.0.10<div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">class</span> <span class="identifier">MailTemplate</span> : <span class="identifier">IMailMessage</span></code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><a href="https://learn.microsoft.com/dotnet/api/system.object" target="_blank" rel="noopener noreferrer">Object</a>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">MailTemplate</span></dd></dl><dl class="implementsList"><dt>Implements</dt><dd><a href="T_DotNetExtras_Mail_IMailMessage.htm">IMailMessage</a></dd></dl></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Remarks</h2><div id="IDBCSection"><p>
              The merge process makes these assumptions and conforms to the following conventions:
              <ul><li>Every email template is identified by a string ID, such as <span class="code">EmailVerification</span>, <span class="code">WelcomeMessage</span>, etc.</li><li>Localized template files are named as <span class="code">templateId_languageCode.extension</span>, such as <span class="code">Welcome_es-mx.html</span> (separator characters can be customized).</li><li>Localized template files are formatted as valid HTML documents.</li><li>The contents of the <span class="code">&lt;title&gt;</span> elements in the localized template files will be used as the email message subjects.</li><li>The contents of the <span class="code">&lt;body&gt;</span> elements in the localized template files will be used as the email message bodies.</li><li>Template files can contain Razor syntax for data binding.</li><li>The specified language code must match the language code suffix in the file name.</li><li>If no template file with the language code suffix matching the specified language code is found for a particular email template ID, then an alternative language code will be used.</li><li>If a more specific language code (e.g. <span class="code">es-mx</span>) is not implemented for the specified template, a template file with a more generic language code (e.g. <span class="code">es</span>) will be tried.</li><li>A language map can be defined for more precise language code mapping.</li></ul></p></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Example</h2><div id="IDCCSection">
              Zodiac_en-us.html file:
@@ -24,28 +24,26 @@ Your Zodiac sign is: @Raw(Model.Zodiac).
 &lt;/html&gt;</code></pre></div></div>
              
              C# code:
-             <code>
-             MailTemplate template = new();
-            
-             Data data = new()
-             {
-                 Zodiac = "Leo",
-                 Name = "John",
-                 Year = 2025
-             };
-             
-             // Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
-             template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
-             
-             // Subject will hold the merged value of the title element.
-             string subject = template.Subject;
-             
-             // Body will hold the merged value of the body element.
-             string body = template.Body;
-             
-             // Language will hold the language code actually used by the template.
-             string language = template.Language;
-             </code></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAFASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_DotNetExtras_Mail_MailTemplate__ctor.htm">MailTemplate</a></td><td>
+             <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">MailTemplate template = new();
+
+Data data = new()
+{
+    Zodiac = "Leo",
+    Name = "John",
+    Year = 2025
+};
+
+// Load the en-US version of the Zodiac template from the Samples/Zodiac folder and merge it with data.
+template.Load("Samples/Zodiac", "Zodiac", "en-US", ".html", data);
+
+// Subject will hold the merged value of the title element.
+string subject = template.Subject;
+
+// Body will hold the merged value of the body element.
+string body = template.Body;
+
+// Language will hold the language code actually used by the template.
+string language = template.Language;</code></pre></div></div></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Constructors</h2><div id="IDAFASection"><table id="ConstructorList" class="table is-hoverable"><tr><td><a href="M_DotNetExtras_Mail_MailTemplate__ctor.htm">MailTemplate</a></td><td>
             Initializes a new instance of the <span class="selflink">MailTemplate</span> class.
             </td></tr></table></div><h2 class="quickLinkHeader"><span class="icon toggleSection" tabindex="0"><i class="fa fa-angle-down"></i></span>Properties</h2><div id="IDCFASection"><table id="PropertyList" class="table is-hoverable"><tr><td><a href="P_DotNetExtras_Mail_MailTemplate_Body.htm">Body</a></td><td>
             Returns the text of the email HTML message body 

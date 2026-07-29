@@ -327,14 +327,14 @@ public partial class MailTemplate: IMailMessage
         List<string> languages = GetCompatibleLanguages(NormalizeLanguage(language));
 
         // Cache key for the preferred language.
-        string? originalKey = FormatKey(template, language);
+        string? originalKey = FormatKey(folder, template, language);
 
         string key;
 
         foreach (string superLanguage in languages)
         {
             // Generate cache key for the template and language.
-            key = FormatKey(template, superLanguage);
+            key = FormatKey(folder, template, superLanguage);
 
             // See if this language key is already mapped in cache.
             if (_cachedKeys.ContainsKey(key))
@@ -666,8 +666,11 @@ public partial class MailTemplate: IMailMessage
     }
 
     /// <summary>
-    /// Generates the cache key for the specified language code and email template..
+    /// Generates the cache key for the specified folder path, language code and email template.
     /// </summary>
+    /// <param name="templateFolderPath">
+    /// The template folder path.
+    /// </param>
     /// <param name="templateId">
     /// The template identifier.
     /// </param>
@@ -679,15 +682,44 @@ public partial class MailTemplate: IMailMessage
     /// </returns>
     private string FormatKey
     (
+        string templateFolderPath,
         string templateId,
         string language
     )
     {
-        language = Compact(NormalizeLanguage(language)).ToUpper();
+        string folderPath = NormalizeFolderPath(templateFolderPath).ToUpperInvariant();
+        language = Compact(NormalizeLanguage(language)).ToUpperInvariant();
 
-        string idValue = Compact(templateId).ToUpper();
+        string idValue = Compact(templateId).ToUpperInvariant();
 
-        return $"{idValue}{language}";
+        return $"{folderPath}|{idValue}|{language}";
+    }
+
+    /// <summary>
+    /// Normalizes the template folder path for consistent cache-key generation.
+    /// </summary>
+    /// <param name="templateFolderPath">
+    /// The template folder path.
+    /// </param>
+    /// <returns>
+    /// The normalized full folder path.
+    /// </returns>
+    private static string NormalizeFolderPath
+    (
+        string templateFolderPath
+    )
+    {
+        while (templateFolderPath.EndsWith('/'))
+        {
+            templateFolderPath = templateFolderPath.TrimEnd('/');
+        }
+
+        while (templateFolderPath.EndsWith('\\'))
+        {
+            templateFolderPath = templateFolderPath.TrimEnd('\\');
+        }
+
+        return Path.GetFullPath(templateFolderPath);
     }
 
     /// <summary>
@@ -718,15 +750,7 @@ public partial class MailTemplate: IMailMessage
     {
         string fileName = FormatFileNameWithExtension(templateId, language, extension);
 
-        while (templateFolderPath.EndsWith('/'))
-        {
-            templateFolderPath = templateFolderPath.TrimEnd('/');
-        }
-
-        while (templateFolderPath.EndsWith('\\'))
-        {
-            templateFolderPath = templateFolderPath.TrimEnd('\\');
-        }
+        templateFolderPath = NormalizeFolderPath(templateFolderPath);
 
         return Path.GetFullPath(Path.Combine(templateFolderPath, fileName));
     }
